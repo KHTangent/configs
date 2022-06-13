@@ -1,0 +1,4 @@
+[alias]
+	lol = log --oneline --decorate --graph
+	st = status
+
