@@ -1,0 +1,11 @@
+# Add this to the end of .bashrc:
+# if [ -f ~/.bash_aliases ]; then
+#     . ~/.bash_aliases
+# fi
+
+
+function mkcd() {
+	mkdir "$1" && cd "$1"
+}
+
+eval "$(starship init bash)"
