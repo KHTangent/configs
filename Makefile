@@ -25,8 +25,8 @@ vim-depends:
 
 vim:
 	git clone https://github.com/vim/vim.git
-	cd vim/src
-	./configure --enable-gui=gtk2 --with-features=huge --enable-multibyte --enable-rubyinterp=yes \
+	cd vim/src && \
+		./configure --enable-gui=gtk2 --with-features=huge --enable-multibyte --enable-rubyinterp=yes \
 		--enable-python3interp=yes --enable-perlinterp=yes --enable-luainterp=yes --with-luajit=yes \
 		--enable-gui=gtk2 --enable-cscope --prefix=/usr/local --with-python3-config-dir=$$(python3-config \
 		--configdir) --with-python3-command=python3 --enable-largefile --enable-fail-if-missing \
