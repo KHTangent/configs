@@ -14,7 +14,7 @@ git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
 
 ssh:
-	mkdir ${USER}/.ssh
+	mkdir -p /home/${USER}/.ssh
 	ln -s -f ${PWD}/sshconfig /home/${USER}/.ssh/config
 
 vim-depends:
