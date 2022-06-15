@@ -1,0 +1,60 @@
+" From the default.vim file
+
+set nocompatible
+set backspace=indent,eol,start
+set ruler
+set history=500
+set showcmd
+set wildmenu
+set display=truncate
+set scrolloff=8
+autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+syntax on
+
+" End of default.vim extract
+" Begin extract from vimrc_example.vim
+
+set hlsearch
+packadd! matchit
+
+" End of vimrc_example.vim extract
+
+
+" VimPlug stuff
+" Install vim-plug if not found
+if empty(glob('~/.vim/autoload/plug.vim'))
+    silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+      \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+endif
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+    \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+call plug#begin()
+    Plug 'preservim/nerdtree'
+    Plug 'preservim/nerdcommenter'
+call plug#end()
+
+
+" Now for the actual settings
+set number
+filetype plugin on
+
+
+" NERDTree settings
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+    \ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+" Exit Vim if NERDTree is the only window remaining in the only tab.
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+let NERDTreeShowHidden=1
+
+
+" Various plugin settings
+let g:NERDSpaceDelims = 1 " Insert space after comment symbol
+
+

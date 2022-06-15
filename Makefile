@@ -31,4 +31,6 @@ vim:
 		--enable-gui=gtk2 --enable-cscope --prefix=/usr/local --with-python3-config-dir=$$(python3-config \
 		--configdir) --with-python3-command=python3 --enable-largefile --enable-fail-if-missing \
 		&& make -j 8 && sudo make install
+	ln -s -f ${PWD}/.vimrc /home/${USER}/.vimrc
 	@echo "Vim installed"
+
