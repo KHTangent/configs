@@ -1,5 +1,4 @@
 " From the default.vim file
-
 set nocompatible
 set backspace=indent,eol,start
 set ruler
@@ -13,14 +12,18 @@ autocmd BufReadPost *
     \ |   exe "normal! g`\""
     \ | endif
 syntax on
-
 " End of default.vim extract
-" Begin extract from vimrc_example.vim
 
+" Begin extract from vimrc_example.vim
 set hlsearch
 packadd! matchit
-
 " End of vimrc_example.vim extract
+
+
+" Now for the actual settings
+set number
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 
 " VimPlug stuff
@@ -36,12 +39,9 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
     Plug 'preservim/nerdtree'
     Plug 'preservim/nerdcommenter'
+    Plug 'jdonaldson/vaxe'
+    Plug '907th/vim-auto-save'
 call plug#end()
-
-
-" Now for the actual settings
-set number
-filetype plugin on
 
 
 " NERDTree settings
@@ -56,5 +56,5 @@ let NERDTreeShowHidden=1
 
 " Various plugin settings
 let g:NERDSpaceDelims = 1 " Insert space after comment symbol
-
+let g:auto_save = 1
 
