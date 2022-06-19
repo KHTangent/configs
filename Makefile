@@ -1,6 +1,6 @@
 packages:
 	sudo apt update
-	sudo apt install git tmux build-essential
+	sudo apt install git tmux build-essential ffmpeg
 
 tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
