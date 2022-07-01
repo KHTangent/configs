@@ -2,3 +2,5 @@
 	lol = log --oneline --decorate --graph
 	st = status
 
+[user]
+	signingkey = 3745C3E42DA9F1D2
