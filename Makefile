@@ -1,14 +1,17 @@
 packages:
 	sudo apt update
-	sudo apt install git tmux build-essential ffmpeg
+	sudo apt install git tmux build-essential ffmpeg wget curl
 
 tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	ln -s -f ${PWD}/.tmux.conf /home/${USER}/.tmux.conf
 
-# bashrc:
-# 	@echo "if [ -f ~/.bashrc2 ]; then\n    . ~/.bashrc2\nfi\n\n" >> /home/${USER}/.bashrc
-# 	ln -s -f ${PWD}/.bashrc2 /home/${USER}/.bashrc2
+terminal:
+	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete%20Mono.ttf?raw=true" -O "FiraCodeMonoRegular.ttf"
+	sudo mv "FiraCodeMonoRegular.ttf" /usr/local/share/fonts/
+	curl -sS https://starship.rs/install.sh | sh
+	@echo "if [ -f ~/.bashrc2 ]; then\n    . ~/.bashrc2\nfi\n\n" >> /home/${USER}/.bashrc
+	ln -s -f ${PWD}/.bashrc2 /home/${USER}/.bashrc2
 
 git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
