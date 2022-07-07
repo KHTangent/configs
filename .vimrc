@@ -41,6 +41,7 @@ call plug#begin()
     Plug 'preservim/nerdcommenter'
     Plug 'jdonaldson/vaxe'
     Plug '907th/vim-auto-save'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
 
@@ -53,6 +54,19 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 let NERDTreeShowHidden=1
 
+" COC settings
+set nobackup
+set nowritebackup
+set updatetime=300
+inoremap <silent><expr> <c-@> coc#refresh()
+inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
+                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+command! -nargs=0 Format :call CocActionAsync('format')
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Various plugin settings
 let g:NERDSpaceDelims = 1 " Insert space after comment symbol
