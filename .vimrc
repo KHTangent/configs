@@ -3,6 +3,7 @@ set nocompatible
 set backspace=indent,eol,start
 set ruler
 set history=500
+set tabstop=4
 set showcmd
 set wildmenu
 set display=truncate
