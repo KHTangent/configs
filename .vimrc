@@ -41,7 +41,7 @@ call plug#begin()
     Plug 'preservim/nerdtree'
     Plug 'preservim/nerdcommenter'
     Plug 'jdonaldson/vaxe'
-    Plug '907th/vim-auto-save'
+    " Plug '907th/vim-auto-save'
     Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
 
