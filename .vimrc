@@ -25,6 +25,10 @@ packadd! matchit
 set number
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
+set breakindent
+set formatoptions=l
+set lbr
+
 
 
 " VimPlug stuff
