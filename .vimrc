@@ -63,6 +63,7 @@ let NERDTreeShowHidden=1
 set nobackup
 set nowritebackup
 set updatetime=300
+let g:coc_global_extensions = ["coc-json", "coc-git", "coc-css", "coc-docker", "@yaegassy/coc-pylsp", "coc-sh", "coc-sql", "@yaegassy/coc-volar", "coc-tsserver", "coc-html"]
 inoremap <silent><expr> <TAB>
       \ coc#pum#visible() ? coc#pum#next(1):
       \ CheckBackspace() ? "\<Tab>" :
