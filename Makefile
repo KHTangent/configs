@@ -16,10 +16,6 @@ terminal:
 git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
 
-ssh:
-	mkdir -p /home/${USER}/.ssh
-	ln -s -f ${PWD}/sshconfig /home/${USER}/.ssh/config
-
 vim-depends:
 	sudo apt install libncurses5-dev \
 		libgtk2.0-dev libatk1.0-dev \
