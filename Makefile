@@ -31,5 +31,7 @@ vim:
 		--configdir) --with-python3-command=python3 --enable-largefile --enable-fail-if-missing \
 		&& make -j 8 && sudo make install
 	ln -s -f ${PWD}/.vimrc /home/${USER}/.vimrc
+	mkdir -p ${USER}/.vim
+	ln -s -f ${PWD}/coc-settings.json /home/${USER}/.vim/coc-settings.json
 	@echo "Vim installed"
 
