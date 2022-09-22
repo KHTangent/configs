@@ -1,6 +1,7 @@
 packages:
 	sudo apt update
 	sudo apt install git tmux build-essential ffmpeg wget curl
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 tmux:
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
@@ -12,6 +13,17 @@ terminal:
 	curl -sS https://starship.rs/install.sh | sh
 	@echo "if [ -f ~/.bashrc2 ]; then\n    . ~/.bashrc2\nfi\n\n" >> /home/${USER}/.bashrc
 	ln -s -f ${PWD}/.bashrc2 /home/${USER}/.bashrc2
+
+alacritty:
+	mkdir -p ${HOME}/Programs
+	sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
+	git clone https://github.com/alacritty/alacritty
+	cd alacritty && cargo build --release --no-default-features --features=x11
+	sudo cp ./alacritty/target/release/alacritty /usr/local/bin/alacritty
+	sudo cp ./alacritty/extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
+	sudo desktop-file-install alacritty/extra/linux/Alacritty.desktop
+	sudo update-desktop-database
+	ln -s -f ${PWD}/.alacritty.yml /home/${USER}/.alacritty.yml
 
 git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
