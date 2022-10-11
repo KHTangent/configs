@@ -28,7 +28,8 @@ set omnifunc=syntaxcomplete#Complete
 set breakindent
 set formatoptions=l
 set lbr
-
+" Save as root with "w!!"
+cmap w!! w !sudo tee % >/dev/null
 
 
 " VimPlug stuff
