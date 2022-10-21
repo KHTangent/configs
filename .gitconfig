@@ -1,6 +1,8 @@
 [alias]
 	lol = log --oneline --decorate --graph
 	st = status
+	csm = commit -S -m
+	csa = commit -S --amend --no-edit
 
 [user]
 	signingkey = 3745C3E42DA9F1D2
