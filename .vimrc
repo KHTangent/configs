@@ -23,6 +23,7 @@ packadd! matchit
 
 " Now for the actual settings
 set number
+set relativenumber
 filetype plugin on
 set omnifunc=syntaxcomplete#Complete
 set breakindent
