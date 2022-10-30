@@ -46,9 +46,12 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 call plug#begin()
     Plug 'preservim/nerdtree'
     Plug 'preservim/nerdcommenter'
-    Plug 'jdonaldson/vaxe'
-    " Plug '907th/vim-auto-save'
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	if executable("haxe")
+        Plug 'jdonaldson/vaxe'
+	endif
+	if executable("node")
+        Plug 'neoclide/coc.nvim', {'branch': 'release'}
+	endif
 call plug#end()
 
 
