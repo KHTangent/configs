@@ -1,8 +1,5 @@
-# Add this to the end of .bashrc:
-# if [ -f ~/.bash_aliases ]; then
-#     . ~/.bash_aliases
-# fi
-
+# Just a file with more .bashrc, to be appended to the main one 
+# for extra stuff
 
 function mkcd() {
 	mkdir "$1" && cd "$1"
@@ -12,7 +9,16 @@ function gcsm() {
 	git commit -S -m "$@"
 }
 
+alias ll="ls -lah"
+
 export GPG_TTY=$(tty)
 
-eval "$(starship init bash)"
+if [ -x "$(command -v fzf)" ]; then
+	source /usr/share/doc/fzf/examples/key-bindings.bash
+	source /usr/share/doc/fzf/examples/completion.bash
+fi
+
+if [ -x "$(command -v starship)" ]; then
+	eval "$(starship init bash)"
+fi
 
