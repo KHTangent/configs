@@ -32,6 +32,9 @@ set lbr
 " Save as root with "w!!"
 cmap w!! w !sudo tee % >/dev/null
 
+" Center view while scrolling
+nnoremap <C-u> <C-u>zz
+nnoremap <C-d> <C-d>zz
 
 " VimPlug stuff
 " Install vim-plug if not found
