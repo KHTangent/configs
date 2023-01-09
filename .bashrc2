@@ -15,7 +15,9 @@ export GPG_TTY=$(tty)
 
 if [ -x "$(command -v fzf)" ]; then
 	source /usr/share/doc/fzf/examples/key-bindings.bash
-	source /usr/share/doc/fzf/examples/completion.bash
+	if [ -f "/usr/share/doc/fzf/examples/completion.bash" ]; then
+		source /usr/share/doc/fzf/examples/completion.bash
+	fi
 fi
 
 if [ -x "$(command -v starship)" ]; then
