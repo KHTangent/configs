@@ -65,6 +65,9 @@ call plug#begin()
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	endif
 call plug#end()
+
+
+let g:dracula_colorterm = 0
 colorscheme dracula
 
 
