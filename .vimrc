@@ -57,6 +57,7 @@ call plug#begin()
 	Plug 'preservim/nerdtree'
 	Plug 'preservim/nerdcommenter'
 	Plug 'tpope/vim-sleuth'
+	Plug 'dracula/vim', { 'as': 'dracula' }
 	if executable("haxe")
 		Plug 'jdonaldson/vaxe'
 	endif
@@ -64,6 +65,7 @@ call plug#begin()
 		Plug 'neoclide/coc.nvim', {'branch': 'release'}
 	endif
 call plug#end()
+colorscheme dracula
 
 
 " NERDTree settings
