@@ -46,3 +46,11 @@ vim:
 	ln -s -f ${PWD}/coc-settings.json /home/${USER}/.vim/coc-settings.json
 	@echo "Vim installed"
 
+neovim:
+	sudo apt install wget python3-dev python3-pip
+	wget https://github.com/neovim/neovim/releases/download/nightly/nvim-linux64.deb
+	sudo apt install ./nvim-linux64.deb
+	mkdir -p /home/${USER}/.config
+	ln -s -f ${PWD}/nvim/ /home/${USER}/.config/nvim
+	rm -f ./nvim-linux64.deb
+
