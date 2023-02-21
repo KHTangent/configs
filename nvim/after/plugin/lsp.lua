@@ -61,3 +61,5 @@ vim.diagnostic.config({
 	virtual_text = true
 })
 
+vim.keymap.set("n", "<S-A-F>", ":LspZeroFormat<CR>")
+
