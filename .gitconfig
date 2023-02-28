@@ -3,7 +3,9 @@
 	st = status
 	csm = commit -S -m
 	csa = commit -S --amend --no-edit
-
+	bd = branch -d
+	cb = checkout -b
+	ri = rebase -i
 [user]
 	signingkey = 3745C3E42DA9F1D2
 	email = contact@khtangent.com
