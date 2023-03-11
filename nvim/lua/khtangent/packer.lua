@@ -19,7 +19,15 @@ return require('packer').startup(function(use)
 	use("lambdalisue/suda.vim")
 	use("mg979/vim-visual-multi")
 	use("tpope/vim-surround")
-	use("preservim/nerdcommenter")
+	use("numToStr/Comment.nvim")
+	use("tpope/vim-sleuth")
+	use {
+		"folke/which-key.nvim",
+		config = function ()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end
+	}
 
 	-- Navigation
 	use {
