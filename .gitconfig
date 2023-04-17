@@ -3,8 +3,10 @@
 	st = status
 	csm = commit -S -m
 	csa = commit -S --amend --no-edit
+	csam = commit -S --amend -m
 	bd = branch -d
 	cb = checkout -b
+	c = checkout
 	ri = rebase -i
 [user]
 	signingkey = 3745C3E42DA9F1D2
