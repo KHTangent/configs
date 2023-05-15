@@ -13,6 +13,6 @@ bufferline.setup {
 	}
 }
 
-vim.keymap.set("n", "<leader><Tab>", ":BufferLineCycleNext<CR>", {desc = "Go to next tab"})
-vim.keymap.set("n", "<leader><S-Tab>", ":BufferLineCyclePrev<CR>", {desc = "Go to prev tab"})
+vim.keymap.set("n", "<Tab>", ":BufferLineCycleNext<CR>", {desc = "Go to next tab"})
+vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", {desc = "Go to prev tab"})
 
