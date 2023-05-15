@@ -66,6 +66,7 @@ return require('packer').startup(function(use)
 			require("bufferline").setup{}
 		end
 	}
+	use("ojroques/nvim-bufdel")
 
 	-- Autocomplete-related
 	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})

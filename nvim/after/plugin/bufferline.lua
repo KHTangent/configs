@@ -2,6 +2,7 @@ local bufferline = require("bufferline")
 
 bufferline.setup {
 	options = {
+		close_command = "BufDel %d",
 		offsets = {
 			{
 				filetype = "neo-tree",
