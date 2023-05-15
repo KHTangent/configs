@@ -18,5 +18,7 @@ require("neo-tree").setup({
 		group_empty_dirs = false
 	}
 })
-vim.cmd([[nnoremap \ :Neotree reveal<cr>]])
+vim.keymap.set("n", "\\", ":Neotree reveal<cr>", {desc = "Show NeoTree"})
+vim.keymap.set("n", "<leader>b", ":Neotree toggle show buffers right<cr>", {desc = "NeoTree show buffers"})
+vim.keymap.set("n", "<leader>s", ":Neotree float git_status<cr>", {desc = "NeoTree show git status"})
 

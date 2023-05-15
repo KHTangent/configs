@@ -26,6 +26,17 @@ return require('packer').startup(function(use)
 		config = function ()
 			vim.o.timeout = true
 			vim.o.timeoutlen = 300
+			require("which-key").setup {
+				triggers = "auto"
+			}
+		end
+	}
+	use {
+		"rmagatti/auto-session",
+		config = function()
+			require("auto-session").setup {
+				auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+			}
 		end
 	}
 
@@ -45,6 +56,15 @@ return require('packer').startup(function(use)
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		}
+	}
+	use {
+		"akinsho/bufferline.nvim",
+		tag = "*",
+		requires = "nvim-tree/nvim-web-devicons",
+		config = function()
+			vim.opt.termguicolors = true
+			require("bufferline").setup{}
+		end
 	}
 
 	-- Autocomplete-related
@@ -77,9 +97,7 @@ return require('packer').startup(function(use)
 	use({
 		"Mofiqul/dracula.nvim",
 		config = function()
-			require("dracula").setup({
-				transparent_bg = true
-			})
+			require("dracula").setup()
 			vim.cmd[[colorscheme dracula]]
 		end
 	})
