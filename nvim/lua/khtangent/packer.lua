@@ -45,7 +45,6 @@ return require('packer').startup(function(use)
 		tag = '0.1.1',
 		requires = { {'nvim-lua/plenary.nvim'} }
 	}
-	use("theprimeagen/harpoon")
 	vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
@@ -101,6 +100,17 @@ return require('packer').startup(function(use)
 			vim.cmd[[colorscheme dracula]]
 		end
 	})
+	use {
+		"nvim-lualine/lualine.nvim",
+		requires = {"nvim-tree/nvim-web-devicons", opt = true},
+		config = function ()
+			require("lualine").setup {
+				options = {
+					theme = "dracula",
+				},
+			}
+		end
+	}
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
