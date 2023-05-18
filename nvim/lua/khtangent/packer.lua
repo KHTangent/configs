@@ -15,11 +15,15 @@ return require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 
 	-- Utilities
-	use("tpope/vim-fugitive")
 	use("lambdalisue/suda.vim")
 	use("mg979/vim-visual-multi")
 	use("tpope/vim-surround")
-	use("numToStr/Comment.nvim")
+	use {
+		"numToStr/Comment.nvim",
+		config = function()
+			require('Comment').setup()
+		end
+	}
 	use("tpope/vim-sleuth")
 	use {
 		"folke/which-key.nvim",
@@ -38,6 +42,12 @@ return require('packer').startup(function(use)
 		end
 	}
 	use("github/copilot.vim")
+	use {
+		"TimUntersberger/neogit",
+		requires = {
+			"nvim-lua/plenary.nvim",
+		}
+	}
 
 	-- Navigation
 	use {
