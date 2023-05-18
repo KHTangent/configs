@@ -10,6 +10,8 @@ function gcsm() {
 }
 
 alias ll="ls -lah"
+alias ffmpeg="ffmpeg -hide_banner"
+alias ffprobe="ffprobe -hide_banner"
 
 export GPG_TTY=$(tty)
 
