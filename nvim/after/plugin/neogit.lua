@@ -1,6 +1,10 @@
 local neogit = require("neogit")
 
-neogit.setup()
+neogit.setup({
+	integrations = {
+		diffview = true
+	}
+})
 
 vim.keymap.set("n", "<leader>gs", function()
 	neogit.open({kind = "tab"})

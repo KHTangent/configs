@@ -42,11 +42,28 @@ return require('packer').startup(function(use)
 		end
 	}
 	use("github/copilot.vim")
+
+	-- Git plugins
 	use {
 		"TimUntersberger/neogit",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		}
+	}
+	use {
+		"sindrets/diffview.nvim",
+		config = function()
+			require("diffview").setup()
+		end
+	}
+	use {
+		"tanvirtin/vgit.nvim",
+		require = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = function()
+			require("vgit").setup()
+		end
 	}
 
 	-- Navigation
