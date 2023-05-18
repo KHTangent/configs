@@ -1,7 +1,0 @@
-{
-	"pylsp.builtin.installExtrasArgs": [
-		"mccabe",
-		"pyflakes",
-		"rope"
-	]
-}
