@@ -41,7 +41,15 @@ return require('packer').startup(function(use)
 			vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 		end
 	}
-	use("github/copilot.vim")
+	use {
+		"github/copilot.vim",
+		config = function()
+			vim.g.copilot_filetypes = {
+				yaml = true,
+				markdown = true,
+			}
+		end
+	}
 
 	-- Git plugins
 	use {
