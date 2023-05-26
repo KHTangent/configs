@@ -17,5 +17,5 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>")
 
-vim.keymap.set("n", "<leader>ø", ":terminal<cr>", {desc = "Open integrated terminal"})
+vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 
