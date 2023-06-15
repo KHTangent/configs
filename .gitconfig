@@ -14,3 +14,5 @@
 	name = KHTangent
 [commit]
 	gpgsign = true
+[init]
+	defaultBranch = master
