@@ -12,7 +12,6 @@ lsp.ensure_installed({
 	"lua_ls",
 	"marksman",
 	"pylsp",
-	"rust_analyzer",
 	"texlab",
 	"tsserver",
 	"volar",
@@ -28,6 +27,10 @@ lsp.configure("lua_ls", {
 			}
 		}
 	}
+})
+
+lsp.configure("rust_analyzer", {
+	force_setup = true,
 })
 
 
