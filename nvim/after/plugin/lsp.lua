@@ -105,6 +105,11 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "Signature help",
 	})
+	vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.hover() end, {
+		buffer = bufnr,
+		remap = false,
+		desc = "Display hover",
+	})
 end)
 
 lsp.setup()

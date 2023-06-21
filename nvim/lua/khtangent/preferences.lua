@@ -7,6 +7,7 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 vim.opt.expandtab = false
 vim.opt.smartindent = true
+vim.opt.exrc = true
 
 vim.opt.hlsearch = false
 vim.opt.incsearch = true
