@@ -53,7 +53,7 @@ return require('packer').startup(function(use)
 
 	-- Git plugins
 	use {
-		"TimUntersberger/neogit",
+		"NeogitOrg/neogit",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		}
