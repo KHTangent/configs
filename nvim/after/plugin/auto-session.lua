@@ -5,7 +5,6 @@ require("auto-session").setup {
 	},
 	post_restore_cmds = {
 		"Neotree reveal",
-		"BufferLineGoToBuffer -1",
 	},
 }
 
