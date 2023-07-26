@@ -5,15 +5,11 @@ function mkcd() {
 	mkdir "$1" && cd "$1"
 }
 
-function gcsm() {
-	git commit -S -m "$@"
-}
-
 function md2clipboard() {
 	pandoc -f markdown -t html | xclip -selection clipboard -t text/html
 }
 
-alias ll="ls -lah"
+alias ll="ls -lAFh"
 alias lle="exa -lahb --git"
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
