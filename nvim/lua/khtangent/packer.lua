@@ -154,6 +154,14 @@ return require('packer').startup(function(use)
 		end
 	}
 
+	-- Fun
+	use {
+		"andweeb/presence.nvim",
+		config = function()
+			require("presence").setup()
+		end
+	}
+
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
 	if packer_bootstrap then
