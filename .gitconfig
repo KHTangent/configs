@@ -1,3 +1,8 @@
+[core]
+	editor = nvim
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only --features=interactive
 [alias]
 	lol = log --oneline --decorate --graph
 	st = status
@@ -16,3 +21,8 @@
 	gpgsign = true
 [init]
 	defaultBranch = master
+[delta]
+	features = decorations
+	line-numbers = true
+	tabs = 4
+	side-by-side

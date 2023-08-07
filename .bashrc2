@@ -15,6 +15,7 @@ alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 
 export GPG_TTY=$(tty)
+export BAT_THEME="Dracula"
 
 if [ -x "$(command -v fzf)" ]; then
 	source /usr/share/doc/fzf/examples/key-bindings.bash
