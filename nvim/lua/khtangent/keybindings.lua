@@ -11,11 +11,11 @@ vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
+vim.keymap.set("n", "<leader><leader>", "zz")
 
 vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 
-vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>")
-
+vim.keymap.set("n", "<leader>r", ":edit<CR>", {desc = "Reload file"})
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 
