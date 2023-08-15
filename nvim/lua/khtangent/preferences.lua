@@ -19,3 +19,6 @@ vim.opt.listchars = {
 	nbsp = "␣",
 }
 
+-- Fixes vgit jumping around by enabling signcolumn
+vim.opt.signcolumn = "yes"
+
