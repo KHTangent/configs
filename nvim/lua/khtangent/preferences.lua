@@ -22,3 +22,5 @@ vim.opt.listchars = {
 -- Fixes vgit jumping around by enabling signcolumn
 vim.opt.signcolumn = "yes"
 
+vim.opt.updatetime = 300
+
