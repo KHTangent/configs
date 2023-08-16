@@ -110,7 +110,15 @@ return require('packer').startup(function(use)
 	use("ojroques/nvim-bufdel")
 
 	-- Autocomplete-related
-	use({"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"})
+	use {
+		"nvim-treesitter/nvim-treesitter",
+		run = ":TSUpdate",
+		config = function ()
+			vim.opt.foldlevel = 99
+			vim.opt.foldmethod = "expr"
+			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+		end
+	}
 	use {
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
@@ -181,6 +189,12 @@ return require('packer').startup(function(use)
 					"RainbowDelimiterViolet",
 				}
 			}
+		end
+	}
+	use {
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup()
 		end
 	}
 
