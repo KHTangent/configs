@@ -109,7 +109,7 @@ return require('packer').startup(function(use)
 	}
 	use("ojroques/nvim-bufdel")
 
-	-- Autocomplete-related
+	-- LSP and such
 	use {
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
@@ -140,6 +140,14 @@ return require('packer').startup(function(use)
 			{"L3MON4D3/LuaSnip"},             -- Required
 			{"rafamadriz/friendly-snippets"}, -- Optional
 		}
+	}
+	use {
+		"weilbith/nvim-code-action-menu",
+		cmd = "CodeActionMenu",
+	}
+	use {
+		"folke/trouble.nvim",
+		requires = "nvim-tree/nvim-web-devicons",
 	}
 
 	-- Visual
@@ -196,6 +204,14 @@ return require('packer').startup(function(use)
 		config = function()
 			require("pretty-fold").setup()
 		end
+	}
+	use {
+		"kosayoda/nvim-lightbulb",
+		config = function()
+			require("nvim-lightbulb").setup({
+				autocmd = { enabled = true },
+			})
+		end,
 	}
 
 	-- Fun
