@@ -114,9 +114,9 @@ return require('packer').startup(function(use)
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		config = function ()
-			vim.opt.foldlevel = 99
 			vim.opt.foldmethod = "expr"
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+			vim.opt.foldlevel = 99
 		end
 	}
 	use {
@@ -183,6 +183,11 @@ return require('packer').startup(function(use)
 				strategy = {
 					[''] = rainbow_delimiters.strategy['global'],
 					vim = rainbow_delimiters.strategy['local'],
+				},
+				blacklist = {
+					"html",
+					"vue",
+					"markdown",
 				},
 				query = {
 					[''] = 'rainbow-delimiters',
