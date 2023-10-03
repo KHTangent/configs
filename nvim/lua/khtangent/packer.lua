@@ -56,6 +56,12 @@ return require('packer').startup(function(use)
 			vim.fn['firenvim#install'](0)
 		end
 	}
+	use {
+		"folke/neodev.nvim",
+		run = function()
+			require("neodev").setup()
+		end
+	}
 
 	-- Git plugins
 	use {
@@ -83,7 +89,7 @@ return require('packer').startup(function(use)
 	-- Navigation
 	use {
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.1",
+		tag = "0.1.x",
 		requires = {
 			"nvim-lua/plenary.nvim",
 		}
@@ -216,10 +222,11 @@ return require('packer').startup(function(use)
 			require("nvim-lightbulb").setup({
 				autocmd = { enabled = true },
 			})
-		end,
+		end
 	}
 	use {
 		"lukas-reineke/indent-blankline.nvim",
+		tag = "v2.20.8",
 		config = function ()
 			require("indent_blankline").setup{
 				char_highlight_list = {
