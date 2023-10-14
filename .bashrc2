@@ -9,8 +9,12 @@ function md2clipboard() {
 	pandoc -f markdown -t html | xclip -selection clipboard -t text/html
 }
 
-alias ll="ls -lAFh"
-alias lle="exa -lahb --git"
+if [ -x "$(command -v exa)" ]; then
+	alias ll="exa -lahb --git"
+else
+	alias ll="ls -lAFh"
+fi
+
 alias ffmpeg="ffmpeg -hide_banner"
 alias ffprobe="ffprobe -hide_banner"
 
