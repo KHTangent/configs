@@ -1,4 +1,5 @@
 local lsp = require("lsp-zero")
+local telescope_builtin = require("telescope.builtin")
 
 lsp.preset("recommended")
 
@@ -65,7 +66,7 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "Display hover",
 	})
-	vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, {
+	vim.keymap.set("n", "<leader>vws", telescope_builtin.lsp_workspace_symbols, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Workspace symbol",
@@ -90,7 +91,7 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "View code actions",
 	})
-	vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, {
+	vim.keymap.set("n", "<leader>vrr", telescope_builtin.lsp_references, {
 		buffer = bufnr,
 		remap = false,
 		desc = "View references",

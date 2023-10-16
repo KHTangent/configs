@@ -19,3 +19,5 @@ vim.keymap.set({"n", "v"}, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>r", ":edit<CR>", {desc = "Reload file"})
 vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 
+vim.keymap.set("n", "Ø", "<C-w>j<C-w>q<C-w>l", {desc = "Close lower window"})
+
