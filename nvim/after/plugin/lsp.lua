@@ -34,6 +34,18 @@ lsp.configure("rust_analyzer", {
 	force_setup = true,
 })
 
+lsp.configure("pylsp", {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					enabled = false
+				}
+			}
+		}
+	}
+})
+
 
 local cmp = require("cmp")
 local cmp_select = {behavior = cmp.SelectBehavior.Select}
