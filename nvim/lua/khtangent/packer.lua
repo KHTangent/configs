@@ -17,6 +17,10 @@ return require('packer').startup(function(use)
 	-- Utilities
 	use("lambdalisue/suda.vim")
 	use("mg979/vim-visual-multi")
+	use {
+		"nvim-telescope/telescope-fzf-native.nvim",
+		run = "make",
+	}
 	use("tpope/vim-surround")
 	use {
 		"numToStr/Comment.nvim",
