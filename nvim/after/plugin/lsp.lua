@@ -98,7 +98,7 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "Goto prev diagnostic",
 	})
-	vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, {
+	vim.keymap.set("n", "<leader>vca", require("actions-preview").code_actions, {
 		buffer = bufnr,
 		remap = false,
 		desc = "View code actions",

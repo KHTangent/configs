@@ -21,6 +21,7 @@ return require('packer').startup(function(use)
 		"nvim-telescope/telescope-fzf-native.nvim",
 		run = "make",
 	}
+	use("aznhe21/actions-preview.nvim")
 	use("tpope/vim-surround")
 	use {
 		"numToStr/Comment.nvim",
