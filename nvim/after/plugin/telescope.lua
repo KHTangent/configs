@@ -2,6 +2,7 @@ local telescope = require("telescope")
 local builtin = require('telescope.builtin')
 
 telescope.load_extension("fzf")
+telescope.load_extension("ui-select")
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {desc = "Find in folder"})
 vim.keymap.set("n", "<C-p>", function ()

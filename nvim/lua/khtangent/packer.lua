@@ -86,6 +86,7 @@ return require('packer').startup(function(use)
 			"nvim-lua/plenary.nvim",
 		}
 	}
+	use("nvim-telescope/telescope-ui-select.nvim")
 	vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
 	use {
 		"nvim-neo-tree/neo-tree.nvim",
@@ -138,10 +139,6 @@ return require('packer').startup(function(use)
 			{"L3MON4D3/LuaSnip"},             -- Required
 			{"rafamadriz/friendly-snippets"}, -- Optional
 		}
-	}
-	use {
-		"weilbith/nvim-code-action-menu",
-		cmd = "CodeActionMenu",
 	}
 	use {
 		"folke/trouble.nvim",
