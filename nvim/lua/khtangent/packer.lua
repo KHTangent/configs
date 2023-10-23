@@ -69,18 +69,6 @@ return require('packer').startup(function(use)
 
 	-- Git plugins
 	use {
-		"NeogitOrg/neogit",
-		requires = {
-			"nvim-lua/plenary.nvim",
-		}
-	}
-	use {
-		"sindrets/diffview.nvim",
-		config = function()
-			require("diffview").setup()
-		end
-	}
-	use {
 		"tanvirtin/vgit.nvim",
 		requires = {
 			"nvim-lua/plenary.nvim",
