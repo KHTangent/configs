@@ -1,36 +1,32 @@
-local ensure_packer = function()
-	local fn = vim.fn
-	local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
-	if fn.empty(fn.glob(install_path)) > 0 then
-		fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-		vim.cmd [[packadd packer.nvim]]
-		return true
-	end
-	return false
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+	vim.fn.system({
+		"git",
+		"clone",
+		"--filter=blob:none",
+		"https://github.com/folke/lazy.nvim.git",
+		"--branch=stable", -- latest stable release
+		lazypath,
+	})
 end
+vim.opt.rtp:prepend(lazypath)
 
-local packer_bootstrap = ensure_packer()
-
-return require('packer').startup(function(use)
-	use 'wbthomason/packer.nvim'
-
+local plugins = {
 	-- Utilities
-	use("lambdalisue/suda.vim")
-	use("mg979/vim-visual-multi")
-	use {
+	"lambdalisue/suda.vim",
+	"mg979/vim-visual-multi",
+	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		run = "make",
-	}
-	use("aznhe21/actions-preview.nvim")
-	use("tpope/vim-surround")
-	use {
+		build = "make",
+	},
+	"aznhe21/actions-preview.nvim",
+	"tpope/vim-surround",
+	{
 		"numToStr/Comment.nvim",
-		config = function()
-			require('Comment').setup()
-		end
-	}
-	use("tpope/vim-sleuth")
-	use {
+		config = true,
+	},
+	"tpope/vim-sleuth",
+	{
 		"folke/which-key.nvim",
 		config = function ()
 			vim.o.timeout = true
@@ -39,14 +35,14 @@ return require('packer').startup(function(use)
 				triggers = "auto"
 			}
 		end
-	}
-	use {
+	},
+	{
 		"rmagatti/auto-session",
 		config = function()
 			vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 		end
-	}
-	use {
+	},
+	{
 		"github/copilot.vim",
 		config = function()
 			vim.g.copilot_filetypes = {
@@ -54,63 +50,62 @@ return require('packer').startup(function(use)
 				markdown = true,
 			}
 		end
-	}
-	use {
+	},
+	{
 		"glacambre/firenvim",
-		run = function()
+		lazy = not vim.g.started_by_firenvim,
+		build = function()
 			vim.fn['firenvim#install'](0)
 		end
-	}
-	use {
+	},
+	{
 		"folke/neodev.nvim",
-		run = function()
-			require("neodev").setup()
-		end
-	}
+		opts = {},
+	},
 
 	-- Git plugins
-	use {
+	{
 		"tanvirtin/vgit.nvim",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
-		config = function()
-			require("vgit").setup()
-		end
-	}
+		config = true,
+	},
 
 	-- Navigation
-	use {
+	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.x",
-		requires = {
+		branch = "0.1.x",
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 		}
-	}
-	use("nvim-telescope/telescope-ui-select.nvim")
-	vim.cmd([[ let g:neo_tree_remove_legacy_commands = 1 ]])
-	use {
+	},
+	"nvim-telescope/telescope-ui-select.nvim",
+	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
-		requires = {
+		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
-		}
-	}
-	use {
+		},
+		config = function ()
+			vim.g.neo_tree_remove_legacy_commands = 1
+		end
+	},
+	{
 		"akinsho/bufferline.nvim",
-		tag = "*",
-		requires = "nvim-tree/nvim-web-devicons",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
 		config = function()
 			vim.opt.termguicolors = true
 			require("bufferline").setup{}
 		end
-	}
-	use("ojroques/nvim-bufdel")
+	},
+	"ojroques/nvim-bufdel",
 
 	-- LSP and such
-	use {
+	{
 		"nvim-treesitter/nvim-treesitter",
 		run = ":TSUpdate",
 		config = function ()
@@ -118,45 +113,45 @@ return require('packer').startup(function(use)
 			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 			vim.opt.foldlevel = 99
 		end
-	}
-	use {
+	},
+	{
 		'VonHeikemen/lsp-zero.nvim',
 		branch = 'v1.x',
-		requires = {
+		dependencies = {
 			-- LSP Support
-			{"neovim/nvim-lspconfig"},             -- Required
-			{"williamboman/mason.nvim"},           -- Optional
-			{"williamboman/mason-lspconfig.nvim"}, -- Optional
+			{"neovim/nvim-lspconfig"},
+			{"williamboman/mason.nvim"},
+			{"williamboman/mason-lspconfig.nvim"},
 
 			-- Autocompletion
-			{"hrsh7th/nvim-cmp"},         -- Required
-			{"hrsh7th/cmp-nvim-lsp"},     -- Required
-			{"hrsh7th/cmp-buffer"},       -- Optional
-			{"hrsh7th/cmp-path"},         -- Optional
-			{"saadparwaiz1/cmp_luasnip"}, -- Optional
-			{"hrsh7th/cmp-nvim-lua"},     -- Optional
+			{"hrsh7th/nvim-cmp"},
+			{"hrsh7th/cmp-nvim-lsp"},
+			{"hrsh7th/cmp-buffer"},
+			{"hrsh7th/cmp-path"},
+			{"saadparwaiz1/cmp_luasnip"},
+			{"hrsh7th/cmp-nvim-lua"},
 
 			-- Snippets
-			{"L3MON4D3/LuaSnip"},             -- Required
-			{"rafamadriz/friendly-snippets"}, -- Optional
+			{"L3MON4D3/LuaSnip"},
+			{"rafamadriz/friendly-snippets"},
 		}
-	}
-	use {
+	},
+	{
 		"folke/trouble.nvim",
-		requires = "nvim-tree/nvim-web-devicons",
-	}
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
 
 	-- Visual
-	use({
+	{
 		"Mofiqul/dracula.nvim",
 		config = function()
 			require("dracula").setup()
 			vim.cmd[[colorscheme dracula]]
 		end
-	})
-	use {
+	},
+	{
 		"nvim-lualine/lualine.nvim",
-		requires = {"nvim-tree/nvim-web-devicons", opt = true},
+		dependencies = {"nvim-tree/nvim-web-devicons", opt = true},
 		config = function ()
 			require("lualine").setup {
 				options = {
@@ -164,14 +159,14 @@ return require('packer').startup(function(use)
 				},
 			}
 		end
-	}
-	use {
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup()
 		end
-	}
-	use {
+	},
+	{
 		"hiphish/rainbow-delimiters.nvim",
 		config = function()
 			local rainbow_delimiters = require("rainbow-delimiters")
@@ -199,22 +194,22 @@ return require('packer').startup(function(use)
 				}
 			}
 		end
-	}
-	use {
+	},
+	{
 		"anuvyklack/pretty-fold.nvim",
 		config = function()
 			require("pretty-fold").setup()
 		end
-	}
-	use {
+	},
+	{
 		"kosayoda/nvim-lightbulb",
 		config = function()
 			require("nvim-lightbulb").setup({
 				autocmd = { enabled = true },
 			})
 		end
-	}
-	use {
+	},
+	{
 		"lukas-reineke/indent-blankline.nvim",
 		tag = "v2.20.8",
 		config = function ()
@@ -230,20 +225,14 @@ return require('packer').startup(function(use)
 				}
 			}
 		end
-	}
+	},
 
 	-- Fun
-	use {
+	{
 		"andweeb/presence.nvim",
-		config = function()
-			require("presence").setup()
-		end
-	}
+		config = true,
+	},
+}
 
-	-- Automatically set up your configuration after cloning packer.nvim
-	-- Put this at the end after all plugins
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-end)
+require("lazy").setup(plugins)
 
