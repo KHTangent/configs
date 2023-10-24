@@ -20,7 +20,7 @@ local plugins = {
 		build = "make",
 	},
 	"aznhe21/actions-preview.nvim",
-	"tpope/vim-surround",
+	"machakann/vim-sandwich",
 	{
 		"numToStr/Comment.nvim",
 		config = true,
@@ -65,11 +65,15 @@ local plugins = {
 
 	-- Git plugins
 	{
-		"tanvirtin/vgit.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		},
-		config = true,
+		"lewis6991/gitsigns.nvim",
+		config = function ()
+			require("gitsigns").setup {
+				current_line_blame = true,
+				current_line_blame_opts = {
+					delay = 250,
+				}
+			}
+		end
 	},
 
 	-- Navigation
@@ -231,11 +235,6 @@ local plugins = {
 	{
 		"andweeb/presence.nvim",
 		config = true,
-	},
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-		opts = {}
 	},
 }
 
