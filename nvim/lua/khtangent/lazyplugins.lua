@@ -232,6 +232,11 @@ local plugins = {
 		"andweeb/presence.nvim",
 		config = true,
 	},
+	{
+		"m4xshen/hardtime.nvim",
+		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+		opts = {}
+	},
 }
 
 require("lazy").setup(plugins)
