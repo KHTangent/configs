@@ -114,12 +114,10 @@ local plugins = {
 	-- LSP and such
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		run = ":TSUpdate",
-		config = function ()
-			vim.opt.foldmethod = "expr"
-			vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-			vim.opt.foldlevel = 99
-		end
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',

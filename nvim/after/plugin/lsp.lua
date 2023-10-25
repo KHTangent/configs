@@ -73,6 +73,11 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "Go to definition",
 	})
+	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {
+		buffer = bufnr,
+		remap = false,
+		desc = "View signature help",
+	})
 	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {
 		buffer = bufnr,
 		remap = false,
