@@ -25,7 +25,10 @@ local plugins = {
 		"numToStr/Comment.nvim",
 		config = true,
 	},
-	"tpope/vim-sleuth",
+	{
+		"NMAC427/guess-indent.nvim",
+		config = true,
+	},
 	{
 		"folke/which-key.nvim",
 		config = function ()
