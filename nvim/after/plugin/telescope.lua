@@ -16,6 +16,7 @@ vim.keymap.set("n", "<leader>ps", builtin.live_grep, {desc = "Grep in project"})
 
 vim.keymap.set("n", "<leader>fc", builtin.commands, {desc = "Find command"})
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, {desc = "Find keymaps"})
+vim.keymap.set("n", "<leader>cf", builtin.quickfix, {desc = "Find quickfix"})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {desc = "Find help pages"})
 
 telescope.setup({

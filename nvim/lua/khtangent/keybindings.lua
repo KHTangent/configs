@@ -24,3 +24,6 @@ vim.keymap.set("n", "<leader>tc", ":tabclose<CR>")
 
 vim.keymap.set("n", "Ø", "<C-w>j<C-w>q<C-w>l", {desc = "Close lower window"})
 
+vim.keymap.set("n", "<leader>cn", ":cn<CR>", {desc = "Quickfix next"})
+vim.keymap.set("n", "<leader>cp", ":cp<CR>", {desc = "Quickfix previous"})
+
