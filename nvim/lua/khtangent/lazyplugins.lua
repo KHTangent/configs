@@ -65,6 +65,10 @@ local plugins = {
 		"folke/neodev.nvim",
 		opts = {},
 	},
+	{
+		"smoka7/hop.nvim",
+		config = true,
+	},
 
 	-- Git plugins
 	{
