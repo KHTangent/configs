@@ -3,9 +3,6 @@ vim.g.mapleader = " "
 vim.keymap.set({"n", "v", "o"}, "ø", "^")
 vim.keymap.set({"n", "v", "o"}, "æ", "$")
 
-vim.keymap.set("n", "<M-j>", "<C-E>", {desc = "Scroll down"})
-vim.keymap.set("n", "<M-k>", "<C-Y>", {desc = "Scroll up"})
-
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
