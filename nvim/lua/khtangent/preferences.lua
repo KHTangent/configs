@@ -21,6 +21,9 @@ vim.opt.listchars = {
 	nbsp = "␣",
 }
 
+-- Fixes wrong indentation of cases in C switch statements
+vim.opt.cinoptions = "l1"
+
 -- Fixes vgit jumping around by enabling signcolumn
 vim.opt.signcolumn = "yes"
 
