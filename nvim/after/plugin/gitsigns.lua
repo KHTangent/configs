@@ -10,6 +10,24 @@ require('gitsigns').setup{
 	on_attach = function(bufnr)
 		local gs = package.loaded.gitsigns
 
+		vim.keymap.set("n", "<leader>hn", function()
+			if vim.wo.diff then return "]c" end
+			vim.schedule(function() gs.next_hunk() end)
+			return "<Ignore>"
+		end, {
+			expr = true,
+			desc = "Goto next hunk"
+		})
+
+		vim.keymap.set("n", "<leader>hp", function()
+			if vim.wo.diff then return "[c" end
+			vim.schedule(function() gs.prev_hunk() end)
+			return "<Ignore>"
+		end, {
+			expr = true,
+			desc = "Goto previous hunk"
+		})
+
 		local function map(mode, l, r, desc)
 			local opts = {}
 			opts.buffer = bufnr
@@ -24,7 +42,6 @@ require('gitsigns').setup{
 		map('n', '<leader>hS', gs.stage_buffer, "Stage buffer")
 		map('n', '<leader>hu', gs.undo_stage_hunk, "Undo stage hunk")
 		map('n', '<leader>hR', gs.reset_buffer, "Reset buffer")
-		map('n', '<leader>hp', gs.preview_hunk, "Preview hunk")
 		map('n', '<leader>hb', function() gs.blame_line{full=true} end, "Line blame")
 		map('n', '<leader>tb', gs.toggle_current_line_blame, "Toggle line blame")
 		map('n', '<leader>hd', gs.diffthis, "Hunk diff")
