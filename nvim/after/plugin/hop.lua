@@ -5,7 +5,8 @@ vim.keymap.set("", "f",
 	function()
 		hop.hint_char1({
 			direction = directions.AFTER_CURSOR,
-			current_line_only = true
+			current_line_only = true,
+			case_insensitive = false
 		})
 	end,
 	{ remap = true }
@@ -15,7 +16,8 @@ vim.keymap.set("", "F",
 	function()
 		hop.hint_char1({
 			direction = directions.BEFORE_CURSOR,
-			current_line_only = true
+			current_line_only = true,
+			case_insensitive = false
 		})
 	end,
 	{ remap = true }
@@ -26,7 +28,8 @@ vim.keymap.set("", "t",
 		hop.hint_char1({
 			direction = directions.AFTER_CURSOR,
 			current_line_only = true,
-			hint_offset = -1
+			hint_offset = -1,
+			case_insensitive = false
 		})
 	end,
 	{ remap = true }
@@ -37,12 +40,13 @@ vim.keymap.set("", "T",
 		hop.hint_char1({
 			direction = directions.BEFORE_CURSOR,
 			current_line_only = true,
-			hint_offset = 1
+			hint_offset = 1,
+			case_insensitive = false
 		})
 	end,
 	{ remap = true }
 )
 
 vim.keymap.set("n", "<leader>l", hop.hint_words, {desc = "Hop to word"})
-vim.keymap.set("n", "<leader>a", hop.hint_anywhere, {desc = "Hop anywhere"})
+vim.keymap.set("n", "<leader>a", hop.hint_camel_case, {desc = "Hop camelcase"})
 
