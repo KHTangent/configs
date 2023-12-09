@@ -92,6 +92,7 @@ local plugins = {
 		}
 	},
 	"nvim-telescope/telescope-ui-select.nvim",
+	"nvim-telescope/telescope-symbols.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",

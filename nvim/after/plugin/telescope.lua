@@ -18,6 +18,7 @@ vim.keymap.set("n", "<leader>fc", builtin.commands, {desc = "Find command"})
 vim.keymap.set("n", "<leader>fk", builtin.keymaps, {desc = "Find keymaps"})
 vim.keymap.set("n", "<leader>cf", builtin.quickfix, {desc = "Find quickfix"})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {desc = "Find help pages"})
+vim.keymap.set("n", "<leader>fs", builtin.symbols, {desc = "Find symbols"})
 
 telescope.setup({
 	defaults = {
@@ -26,6 +27,14 @@ telescope.setup({
 				preview_width = 0.5
 			}
 		}
-	}
+	},
+	pickers = {
+		symbols = {
+			layout_config = {
+				width = 0.4,
+				height = 0.5,
+			}
+		}
+	},
 })
 
