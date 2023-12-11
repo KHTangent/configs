@@ -83,7 +83,7 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "Display hover",
 	})
-	vim.keymap.set("n", "<leader>vws", telescope_builtin.lsp_workspace_symbols, {
+	vim.keymap.set("n", "<leader>vw", telescope_builtin.lsp_workspace_symbols, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Workspace symbol",
@@ -93,27 +93,27 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "View diagnostic in float window",
 	})
-	vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, {
+	vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Goto next diagnostic",
 	})
-	vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, {
+	vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev() end, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Goto prev diagnostic",
 	})
-	vim.keymap.set("n", "<leader>vca", require("actions-preview").code_actions, {
+	vim.keymap.set("n", "<leader>vc", require("actions-preview").code_actions, {
 		buffer = bufnr,
 		remap = false,
 		desc = "View code actions",
 	})
-	vim.keymap.set("n", "<leader>vrr", telescope_builtin.lsp_references, {
+	vim.keymap.set("n", "<leader>vr", telescope_builtin.lsp_references, {
 		buffer = bufnr,
 		remap = false,
 		desc = "View references",
 	})
-	vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, {
+	vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Rename symbol",
@@ -137,4 +137,3 @@ vim.diagnostic.config({
 })
 
 vim.keymap.set("n", "<S-A-F>", ":LspZeroFormat<CR>", {desc = "Format document"})
-
