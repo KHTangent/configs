@@ -224,21 +224,7 @@ local plugins = {
 		end
 	},
 	{
-		"lukas-reineke/indent-blankline.nvim",
-		tag = "v2.20.8",
-		config = function ()
-			require("indent_blankline").setup{
-				char_highlight_list = {
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterRed",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterBlue",
-					"RainbowDelimiterCyan",
-					"RainbowDelimiterViolet",
-				}
-			}
-		end
+		"shellRaining/hlchunk.nvim"
 	},
 
 	-- Fun
