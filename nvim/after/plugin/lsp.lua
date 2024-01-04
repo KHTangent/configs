@@ -9,7 +9,6 @@ lsp.ensure_installed({
 	"cssls",
 	"emmet_ls",
 	"haxe_language_server",
-	"ltex",
 	"lua_ls",
 	"marksman",
 	"pylsp",
@@ -78,45 +77,15 @@ lsp.on_attach(function(client, bufnr)
 		remap = false,
 		desc = "View signature help",
 	})
-	vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Display hover",
-	})
 	vim.keymap.set("n", "<leader>vw", telescope_builtin.lsp_workspace_symbols, {
 		buffer = bufnr,
 		remap = false,
 		desc = "Workspace symbol",
 	})
-	vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "View diagnostic in float window",
-	})
-	vim.keymap.set("n", "<leader>dn", function() vim.diagnostic.goto_next() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Goto next diagnostic",
-	})
-	vim.keymap.set("n", "<leader>dp", function() vim.diagnostic.goto_prev() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Goto prev diagnostic",
-	})
-	vim.keymap.set("n", "<leader>vc", require("actions-preview").code_actions, {
-		buffer = bufnr,
-		remap = false,
-		desc = "View code actions",
-	})
 	vim.keymap.set("n", "<leader>vr", telescope_builtin.lsp_references, {
 		buffer = bufnr,
 		remap = false,
 		desc = "View references",
-	})
-	vim.keymap.set("n", "<leader>vn", function() vim.lsp.buf.rename() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Rename symbol",
 	})
 	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {
 		buffer = bufnr,

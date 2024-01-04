@@ -19,7 +19,6 @@ local plugins = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
 	},
-	"aznhe21/actions-preview.nvim",
 	"machakann/vim-sandwich",
 	{
 		"numToStr/Comment.nvim",
@@ -154,6 +153,14 @@ local plugins = {
 		"stevearc/conform.nvim",
 		opts = {}
 	},
+	{
+		"nvimdev/lspsaga.nvim",
+		event = "LspAttach",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		}
+	},
 
 	-- Visual
 	{
@@ -213,14 +220,6 @@ local plugins = {
 		"anuvyklack/pretty-fold.nvim",
 		config = function()
 			require("pretty-fold").setup()
-		end
-	},
-	{
-		"kosayoda/nvim-lightbulb",
-		config = function()
-			require("nvim-lightbulb").setup({
-				autocmd = { enabled = true },
-			})
 		end
 	},
 	{
