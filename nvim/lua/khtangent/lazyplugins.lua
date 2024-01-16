@@ -45,15 +45,6 @@ local plugins = {
 		end
 	},
 	{
-		"github/copilot.vim",
-		config = function()
-			vim.g.copilot_filetypes = {
-				yaml = true,
-				markdown = true,
-			}
-		end
-	},
-	{
 		"glacambre/firenvim",
 		lazy = not vim.g.started_by_firenvim,
 		build = function()
