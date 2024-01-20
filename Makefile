@@ -42,7 +42,7 @@ git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
 
 cargo-packages:
-	cargo install exa git-delta bat fd-find ripgrep
+	cargo install eza git-delta bat fd-find ripgrep
 
 neovim:
 	sudo add-apt-repository ppa:neovim-ppa/unstable

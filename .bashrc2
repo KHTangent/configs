@@ -9,8 +9,8 @@ function md2clipboard() {
 	pandoc -f markdown -t html | xclip -selection clipboard -t text/html
 }
 
-if [ -x "$(command -v exa)" ]; then
-	alias ll="exa -lahb --git"
+if [ -x "$(command -v eza)" ]; then
+	alias ll="eza -lahb --git"
 else
 	alias ll="ls -lAFh"
 fi
