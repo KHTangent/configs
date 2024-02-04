@@ -37,6 +37,7 @@ alacritty-ubuntu:
 	sudo desktop-file-install alacritty/extra/linux/Alacritty.desktop
 	sudo update-desktop-database
 	ln -s -f ${PWD}/.alacritty.yml /home/${USER}/.alacritty.yml
+	ln -s -f ${PWD}/.alacritty.toml /home/${USER}/.alacritty.toml
 
 git:
 	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
