@@ -3,6 +3,7 @@ local saga = require("lspsaga")
 saga.setup({
 	symbol_in_winbar = {
 		enable = false,
+		show_file = false,
 	},
 	code_action = {
 		keys = {
