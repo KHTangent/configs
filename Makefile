@@ -21,6 +21,7 @@ terminal:
 	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf" -O "FiraCodeMonoRegular.ttf"
 	sudo mv "FiraCodeMonoRegular.ttf" /usr/local/share/fonts/
 	curl -sS https://starship.rs/install.sh | sh
+	ln -s -f ${PWD}/starship.toml /home/${USER}/.config/starship.toml
 	echo "if [ -f ~/.bashrc2 ]; then" >> /home/${USER}/.bashrc
 	echo "	. ~/.bashrc2" >> /home/${USER}/.bashrc
 	echo "fi" >> /home/${USER}/.bashrc
