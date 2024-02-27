@@ -28,3 +28,4 @@ vim.keymap.set("n", "<C-c>", "<C-w>q", {desc = "Close window"})
 vim.keymap.set("n", "<leader>cn", ":cn<CR>", {desc = "Quickfix next"})
 vim.keymap.set("n", "<leader>cp", ":cp<CR>", {desc = "Quickfix previous"})
 
+vim.keymap.set("v", "<leader>ee", 'c<C-r>=<C-r>"<CR>', {desc = "Evaluate expression"})
