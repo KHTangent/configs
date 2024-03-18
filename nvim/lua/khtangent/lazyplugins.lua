@@ -83,6 +83,7 @@ local plugins = {
 	},
 	"nvim-telescope/telescope-ui-select.nvim",
 	"nvim-telescope/telescope-symbols.nvim",
+	"piersolenski/telescope-import.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -91,7 +92,7 @@ local plugins = {
 			"nvim-tree/nvim-web-devicons",
 			"MunifTanjim/nui.nvim",
 		},
-		config = function ()
+		config = function()
 			vim.g.neo_tree_remove_legacy_commands = 1
 		end
 	},

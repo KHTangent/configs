@@ -3,6 +3,7 @@ local builtin = require('telescope.builtin')
 
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
+telescope.load_extension("import")
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {desc = "Find in folder"})
 vim.keymap.set("n", "<C-p>", function ()
@@ -19,6 +20,7 @@ vim.keymap.set("n", "<leader>fk", builtin.keymaps, {desc = "Find keymaps"})
 vim.keymap.set("n", "<leader>cf", builtin.quickfix, {desc = "Find quickfix"})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {desc = "Find help pages"})
 vim.keymap.set("n", "<leader>fs", builtin.symbols, {desc = "Find symbols"})
+vim.keymap.set("n", "<leader>fi", ":Telescope import<cr>", {desc = "Find imports"})
 
 telescope.setup({
 	defaults = {
@@ -35,6 +37,11 @@ telescope.setup({
 				height = 0.5,
 			}
 		}
+	},
+	extensions = {
+		import = {
+			insert_at_top = true,
+		},
 	},
 })
 
