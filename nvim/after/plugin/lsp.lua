@@ -5,7 +5,6 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
 	"bashls",
-	"clangd",
 	"cssls",
 	"emmet_ls",
 	"haxe_language_server",
@@ -28,6 +27,12 @@ lsp.configure("lua_ls", {
 		}
 	}
 })
+
+if vim.fn.executable("clangd") then
+	lsp.configure("clangd", {
+		force_setup = true,
+	})
+end
 
 lsp.configure("rust_analyzer", {
 	force_setup = true,
