@@ -207,7 +207,9 @@ local plugins = {
 		end
 	},
 	{
-		"shellRaining/hlchunk.nvim"
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
+		opts = {},
 	},
 
 	-- Fun
