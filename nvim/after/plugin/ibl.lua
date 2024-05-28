@@ -24,5 +24,8 @@ require("ibl").setup {
 		highlight = highlight,
 		char = "│",
 		tab_char = "│",
+	},
+	scope = {
+		enabled = false,
 	}
 }
