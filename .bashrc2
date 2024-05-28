@@ -9,8 +9,12 @@ function md2clipboard() {
 	pandoc -f markdown -t html | xclip -selection clipboard -t text/html
 }
 
+# For quickly detecting segfault sources
+alias gdbrun="gdb -ex run --batch --args"
+
 if [ -x "$(command -v eza)" ]; then
 	alias ll="eza -lahb --git"
+	alias ls="eza"
 else
 	alias ll="ls -lAFh"
 fi
