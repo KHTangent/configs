@@ -173,32 +173,6 @@ local plugins = {
 	},
 	{
 		"hiphish/rainbow-delimiters.nvim",
-		config = function()
-			local rainbow_delimiters = require("rainbow-delimiters")
-			vim.g.rainbow_delimiters = {
-				strategy = {
-					[''] = rainbow_delimiters.strategy['global'],
-					vim = rainbow_delimiters.strategy['local'],
-				},
-				blacklist = {
-					"html",
-					"vue",
-					"markdown",
-				},
-				query = {
-					[''] = 'rainbow-delimiters',
-				},
-				highlight = {
-					"RainbowDelimiterYellow",
-					"RainbowDelimiterOrange",
-					"RainbowDelimiterRed",
-					"RainbowDelimiterGreen",
-					"RainbowDelimiterBlue",
-					"RainbowDelimiterCyan",
-					"RainbowDelimiterViolet",
-				}
-			}
-		end
 	},
 	{
 		"anuvyklack/pretty-fold.nvim",
