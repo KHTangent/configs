@@ -14,11 +14,6 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	-- Utilities
 	"lambdalisue/suda.vim",
-	"mg979/vim-visual-multi",
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
 	"machakann/vim-sandwich",
 	{
 		"numToStr/Comment.nvim",
@@ -83,6 +78,10 @@ local plugins = {
 	},
 	"nvim-telescope/telescope-ui-select.nvim",
 	"nvim-telescope/telescope-symbols.nvim",
+	{
+		"nvim-telescope/telescope-fzf-native.nvim",
+		build = "make",
+	},
 	"piersolenski/telescope-import.nvim",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
@@ -171,9 +170,7 @@ local plugins = {
 			require("colorizer").setup()
 		end
 	},
-	{
-		"hiphish/rainbow-delimiters.nvim",
-	},
+	"hiphish/rainbow-delimiters.nvim",
 	{
 		"anuvyklack/pretty-fold.nvim",
 		config = function()
