@@ -33,6 +33,6 @@ vim.keymap.set("v", "<leader>ee", 'c<C-r>=<C-r>"<CR>', {desc = "Evaluate express
 vim.keymap.set("n", "<leader>gc", function ()
 	local filename = vim.fn.expand("%:.")
 	local line_number = vim.fn.line(".")
-	local to_copy = "b '" .. filename .. "':" .. line_number
+	local to_copy = "'" .. filename .. "':" .. line_number
 	vim.fn.setreg("+", to_copy)
-end, {desc = "Copy line as GDB breakpoint"})
+end, {desc = "Copy line with line number"})
