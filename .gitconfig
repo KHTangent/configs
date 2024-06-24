@@ -14,6 +14,8 @@
 	c = checkout
 	ri = rebase --autostash -i
 	ds = diff --staged
+	dw = diff -w
+	dsw = diff --staged -w
 	sur = submodule update --recursive
 	pp = pull --prune
 	fop = fetch origin --prune
