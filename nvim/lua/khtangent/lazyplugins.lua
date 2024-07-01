@@ -54,6 +54,10 @@ local plugins = {
 		"smoka7/hop.nvim",
 		config = true,
 	},
+	{
+		"mistricky/codesnap.nvim",
+		build = "make",
+	},
 
 	-- Git plugins
 	{
