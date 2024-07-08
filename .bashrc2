@@ -13,7 +13,7 @@ function md2clipboard() {
 alias gdbrun="gdb -ex run --batch --args"
 
 if [ -x "$(command -v eza)" ]; then
-	alias ll="eza -lahb --git"
+	alias ll="eza -lahbg --git"
 	alias ls="eza"
 else
 	alias ll="ls -lAFh"
