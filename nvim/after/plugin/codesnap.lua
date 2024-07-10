@@ -6,6 +6,7 @@ codesnap.setup({
 	bg_color = "#535c68",
 	has_line_number = true,
 	watermark = "",
+	bg_padding = 10,
 })
 
 vim.keymap.set("x", "<leader>cc", ":CodeSnap<cr>", {desc = "Save selected code snapshot into clipboard"})
