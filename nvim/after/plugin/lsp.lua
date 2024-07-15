@@ -106,7 +106,13 @@ cmp.setup({
 		{name = "path"},
 		{name = "luasnip"},
 		{name = "nvim_lua"},
-		{name = "html-css"},
+		{
+			name = "html-css",
+			option = {
+				enable_on = { "html", "vue" },
+				file_extensions = { "css", "sass", "scss" },
+			},
+		},
 	},
 	formatting = lsp_zero.cmp_format({details = true}),
 	mapping = cmp_mappings,
@@ -119,6 +125,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered(),
 	},
 })
+require("html-css"):setup()
 
 lsp_zero.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
