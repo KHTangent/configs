@@ -1,96 +1,126 @@
-local lsp = require("lsp-zero")
+local lsp_zero = require("lsp-zero")
+local lspconfig = require("lspconfig")
+local mason = require("mason")
+local mason_lspconfig = require("mason-lspconfig")
 local telescope_builtin = require("telescope.builtin")
-
-lsp.preset("recommended")
-
-lsp.ensure_installed({
-	"bashls",
-	"cssls",
-	"emmet_ls",
-	"haxe_language_server",
-	"lua_ls",
-	"marksman",
-	"pylsp",
-	"texlab",
-	"tsserver",
-	"volar",
-	"yamlls",
-})
-
--- Fix Undefined global 'vim'
-lsp.configure("lua_ls", {
-	settings = {
-		Lua = {
-			diagnostics = {
-				globals = { 'vim' }
-			}
-		}
-	}
-})
-
-if vim.fn.executable("clangd") then
-	lsp.configure("clangd", {
-		force_setup = true,
-	})
-end
-
-lsp.configure("rust_analyzer", {
-	force_setup = true,
-})
-
-lsp.configure("pylsp", {
-	settings = {
-		pylsp = {
-			plugins = {
-				pycodestyle = {
-					enabled = false
-				}
-			}
-		}
-	}
-})
-
-lsp.configure("tsserver", {
-	init_options = {
-		plugins = {
-			{
-				name = "@vue/typescript-plugin",
-				location = require("mason-registry")
-					.get_package("vue-language-server")
-					:get_install_path() .. "/node_modules/@vue/language-server",
-				languages = {"javascript", "typescript", "vue"},
-			},
-		},
-	},
-	filetypes = {
-		"javascript",
-		"typescript",
-		"vue",
-	},
-})
-
-
 local cmp = require("cmp")
-local cmp_select = {behavior = cmp.SelectBehavior.Select}
-local cmp_mappings = lsp.defaults.cmp_mappings({
-	["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
-	["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
-	["<C-y>"] = cmp.mapping.confirm({ select = true }),
+
+mason.setup({})
+mason_lspconfig.setup({
+	ensure_installed = {
+		"bashls",
+		"cssls",
+		"emmet_ls",
+		"haxe_language_server",
+		"lua_ls",
+		"marksman",
+		"pylsp",
+		"texlab",
+		"tsserver",
+		"volar",
+		"yamlls",
+	},
+	handlers = {
+		function(server_name)
+			require('lspconfig')[server_name].setup({})
+		end,
+
+		-- Fix Undefined global 'vim'
+		lua_ls = function ()
+			lspconfig.lua_ls.setup({
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { 'vim' }
+						}
+					}
+				}
+			})
+		end,
+
+		pylsp = function ()
+			lspconfig.pylsp.setup({
+				settings = {
+					pylsp = {
+						plugins = {
+							pycodestyle = {
+								enabled = false
+							}
+						}
+					}
+				}
+			})
+		end,
+
+		tsserver = function ()
+			lspconfig.tsserver.setup({
+				init_options = {
+					plugins = {
+						{
+							name = "@vue/typescript-plugin",
+							location = require("mason-registry")
+								.get_package("vue-language-server")
+								:get_install_path() .. "/node_modules/@vue/language-server",
+							languages = {"javascript", "typescript", "vue"},
+						},
+					},
+				},
+				filetypes = {
+					"javascript",
+					"typescript",
+					"vue",
+				},
+			})
+		end
+	},
+})
+
+
+local cmp_mappings = {
+	["<C-y>"] = cmp.mapping.confirm({select = true}),
+	["<C-e>"] = cmp.mapping.abort(),
+	["<Up>"] = cmp.mapping.select_prev_item({behavior = "select"}),
+	["<Down>"] = cmp.mapping.select_next_item({behavior = "select"}),
+	["<C-p>"] = cmp.mapping(function()
+		if cmp.visible() then
+			cmp.select_prev_item({behavior = "insert"})
+		else
+			cmp.complete()
+		end
+	end),
+	["<C-n>"] = cmp.mapping(function()
+		if cmp.visible() then
+			cmp.select_next_item({behavior = "insert"})
+		else
+			cmp.complete()
+		end
+	end),
+	["<CR>"] = cmp.mapping.confirm({select = true}),
 	["<C-Space>"] = cmp.mapping.complete(),
+}
+
+cmp.setup({
+	sources = {
+		{name = "nvim_lsp"},
+		{name = "buffer"},
+		{name = "path"},
+		{name = "luasnip"},
+		{name = "nvim_lua"},
+		{name = "html-css"},
+	},
+	formatting = lsp_zero.cmp_format({details = true}),
+	mapping = cmp_mappings,
+	preselect = "item",
+	completion = {
+		completeopt = "menu,menuone,noinsert",
+	},
+	window = {
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+	},
 })
 
-cmp_mappings["<Tab>"] = nil
-cmp_mappings["<S-Tab>"] = nil
-
-lsp.setup_nvim_cmp({
-	mapping = cmp_mappings
-})
-
-lsp.set_preferences({
-	suggest_lsp_servers = false
-})
-
-lsp.on_attach(function(client, bufnr)
+lsp_zero.on_attach(function(_, bufnr)
 	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
 		buffer = bufnr,
 		remap = false,
@@ -122,8 +152,6 @@ lsp.on_attach(function(client, bufnr)
 		desc = "Display hover",
 	})
 end)
-
-lsp.setup()
 
 vim.diagnostic.config({
 	virtual_text = true

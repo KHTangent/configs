@@ -119,7 +119,7 @@ local plugins = {
 	},
 	{
 		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v1.x',
+		branch = 'v3.x',
 		dependencies = {
 			-- LSP Support
 			{"neovim/nvim-lspconfig"},
@@ -133,6 +133,7 @@ local plugins = {
 			{"hrsh7th/cmp-path"},
 			{"saadparwaiz1/cmp_luasnip"},
 			{"hrsh7th/cmp-nvim-lua"},
+			{"Jezda1337/nvim-html-css"},
 
 			-- Snippets
 			{"L3MON4D3/LuaSnip"},
