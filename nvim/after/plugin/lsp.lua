@@ -4,6 +4,7 @@ local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local telescope_builtin = require("telescope.builtin")
 local cmp = require("cmp")
+local cmp_action = lsp_zero.cmp_action()
 
 mason.setup({})
 mason_lspconfig.setup({
@@ -76,28 +77,24 @@ mason_lspconfig.setup({
 })
 
 
-local cmp_mappings = {
+require('luasnip.loaders.from_vscode').lazy_load()
+
+local cmp_mappings = cmp.mapping.preset.insert({
+	['<C-d>'] = cmp_action.luasnip_jump_forward(),
+	['<C-b>'] = cmp_action.luasnip_jump_backward(),
+	["<CR>"] = cmp.mapping.confirm({select = true}),
 	["<C-y>"] = cmp.mapping.confirm({select = true}),
 	["<C-e>"] = cmp.mapping.abort(),
 	["<Up>"] = cmp.mapping.select_prev_item({behavior = "select"}),
 	["<Down>"] = cmp.mapping.select_next_item({behavior = "select"}),
-	["<C-p>"] = cmp.mapping(function()
-		if cmp.visible() then
-			cmp.select_prev_item({behavior = "insert"})
-		else
-			cmp.complete()
-		end
-	end),
-	["<C-n>"] = cmp.mapping(function()
-		if cmp.visible() then
-			cmp.select_next_item({behavior = "insert"})
-		else
-			cmp.complete()
-		end
-	end),
-	["<CR>"] = cmp.mapping.confirm({select = true}),
 	["<C-Space>"] = cmp.mapping.complete(),
-}
+	["<C-f>"] = cmp.mapping.scroll_docs(5),
+	["<C-u>"] = cmp.mapping.scroll_docs(-5),
+	["<C-p>"] = cmp.mapping.select_prev_item({behavior = "select"}),
+	["<C-n>"] = cmp.mapping.select_next_item({behavior = "select"}),
+})
+cmp_mappings["<Tab>"] = cmp.config.disable
+cmp_mappings["<S-Tab>"] = cmp.config.disable
 
 cmp.setup({
 	sources = {
@@ -121,8 +118,12 @@ cmp.setup({
 		completeopt = "menu,menuone,noinsert",
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
 		documentation = cmp.config.window.bordered(),
+	},
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
 	},
 })
 require("html-css"):setup()
