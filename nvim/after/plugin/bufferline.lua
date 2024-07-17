@@ -22,4 +22,12 @@ vim.keymap.set("n", "<S-Tab>", ":BufferLineCyclePrev<CR>", {
 	desc = "Go to prev tab",
 	silent = true,
 })
+vim.keymap.set("n", "<leader><Tab>", ":BufferLineMoveNext<CR>", {
+	desc = "Move tab forward",
+	silent = true,
+})
+vim.keymap.set("n", "<leader><S-Tab>", ":BufferLineMovePrev<CR>", {
+	desc = "Move tab backwards",
+	silent = true,
+})
 
