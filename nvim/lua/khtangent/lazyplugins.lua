@@ -58,6 +58,9 @@ local plugins = {
 		"mistricky/codesnap.nvim",
 		build = "make",
 	},
+	{
+		"RaafatTurki/hex.nvim",
+	},
 
 	-- Git plugins
 	{
