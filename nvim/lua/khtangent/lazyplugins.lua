@@ -185,12 +185,6 @@ local plugins = {
 	},
 	"hiphish/rainbow-delimiters.nvim",
 	{
-		"anuvyklack/pretty-fold.nvim",
-		config = function()
-			require("pretty-fold").setup()
-		end
-	},
-	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
