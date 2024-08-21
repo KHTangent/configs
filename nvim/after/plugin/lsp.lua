@@ -77,6 +77,14 @@ mason_lspconfig.setup({
 })
 
 
+if vim.fn.executable("clangd") then
+	lspconfig.clangd.setup({})
+end
+if vim.fn.executable("rust-analyzer") then
+	lspconfig.rust_analyzer.setup({})
+end
+
+
 require('luasnip.loaders.from_vscode').lazy_load()
 
 local cmp_mappings = cmp.mapping.preset.insert({
