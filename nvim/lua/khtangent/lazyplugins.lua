@@ -141,14 +141,6 @@ local plugins = {
 		}
 	},
 	{
-		"Jezda1337/nvim-html-css",
-		enable = false,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-lua/plenary.nvim"
-		}
-	},
-	{
 		"folke/trouble.nvim",
 		dependencies = "nvim-tree/nvim-web-devicons",
 	},
