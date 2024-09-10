@@ -12,6 +12,9 @@ function md2clipboard() {
 # For quickly detecting segfault sources
 alias gdbrun="gdb -ex run --batch --args"
 
+# Quicly calculate stuff
+alias c="numbat -e"
+
 if [ -x "$(command -v eza)" ]; then
 	alias ll="eza -lahbg --git"
 	alias ls="eza"
