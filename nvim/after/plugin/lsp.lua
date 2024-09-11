@@ -112,7 +112,23 @@ cmp.setup({
 		{name = "luasnip"},
 		{name = "nvim_lua"},
 	},
-	formatting = lsp_zero.cmp_format({details = true}),
+	formatting = {
+		expandable_indicator = true,
+		fields = {"abbr", "kind", "menu"},
+		format = require("lspkind").cmp_format({
+			mode = 'symbol',
+			maxwidth = 50,
+			ellipsis_char = '...',
+			show_labelDetails = true,
+			before = function (_, vim_item)
+				local m = vim_item.menu and vim_item.menu or ""
+				if #m > 20 then
+					vim_item.menu = string.sub(m, 1, 20) .. "..."
+				end
+				return vim_item
+			end
+		})
+	},
 	mapping = cmp_mappings,
 	preselect = "item",
 	completion = {

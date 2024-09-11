@@ -134,6 +134,7 @@ local plugins = {
 			{"hrsh7th/cmp-path"},
 			{"saadparwaiz1/cmp_luasnip"},
 			{"hrsh7th/cmp-nvim-lua"},
+			{"onsails/lspkind.nvim"},
 
 			-- Snippets
 			{"L3MON4D3/LuaSnip"},
