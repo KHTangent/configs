@@ -1,5 +1,6 @@
 require("auto-session").setup {
-	auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/"},
+	auto_session_suppress_dirs = { "~/", "~/Desktop", "/"},
+	args_allow_single_directory = false,
 	pre_save_cmds = {
 		"Neotree close",
 	},
