@@ -59,6 +59,12 @@ local plugins = {
 	{
 		"RaafatTurki/hex.nvim",
 	},
+	{
+		"GustavEikaas/code-playground.nvim",
+		config = function()
+			require("code-playground").setup()
+		end
+	},
 
 	-- Git plugins
 	{
