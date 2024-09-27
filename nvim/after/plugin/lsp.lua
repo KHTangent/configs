@@ -17,8 +17,8 @@ mason_lspconfig.setup({
 		"marksman",
 		"pylsp",
 		"texlab",
-		"tsserver",
 		"volar",
+		"vtsls",
 		"yamlls",
 	},
 	handlers = {
@@ -53,19 +53,37 @@ mason_lspconfig.setup({
 			})
 		end,
 
-		tsserver = function ()
-			lspconfig.tsserver.setup({
-				init_options = {
-					plugins = {
+		vtsls = function ()
+			lspconfig.vtsls.setup({
+				settings = {
+					vtsls = {
+						tsserver = {
+							globalPlugins = {},
+						},
+					},
+				},
+				before_init = function(params, config)
+					-- From https://github.com/yioneko/vtsls/issues/148#issuecomment-2119744901
+					local result = vim.system(
+						{"npm", "query", "#vue"},
 						{
+							cwd = params.workspaceFolders[1].name,
+							text = true,
+						}
+					):wait()
+					if result.stdout ~= "[]" then
+						local vuePluginConfig = {
 							name = "@vue/typescript-plugin",
 							location = require("mason-registry")
 								.get_package("vue-language-server")
 								:get_install_path() .. "/node_modules/@vue/language-server",
-							languages = {"javascript", "typescript", "vue"},
-						},
-					},
-				},
+							languages = {"vue"},
+							configNamespace = "typescript",
+							enableForWorkspaceTypeScriptVersions = true,
+						}
+						table.insert(config.settings.vtsls.tsserver.globalPlugins, vuePluginConfig)
+					end
+				end,
 				filetypes = {
 					"javascript",
 					"typescript",
