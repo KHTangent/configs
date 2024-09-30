@@ -20,5 +20,4 @@ require("neo-tree").setup({
 })
 vim.keymap.set("n", "\\", ":Neotree reveal<cr>", {desc = "Show NeoTree"})
 vim.keymap.set("n", "<leader>b", ":Neotree float buffers<cr>", {desc = "NeoTree show buffers"})
-vim.keymap.set("n", "<leader>s", ":Neotree float git_status<cr>", {desc = "NeoTree show git status"})
 
