@@ -14,7 +14,10 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	-- Utilities
 	"lambdalisue/suda.vim",
-	"machakann/vim-sandwich",
+	{
+		"kylechui/nvim-surround",
+		config = true,
+	},
 	{
 		"numToStr/Comment.nvim",
 		config = true,
