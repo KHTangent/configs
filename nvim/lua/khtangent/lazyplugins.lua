@@ -14,10 +14,7 @@ vim.opt.rtp:prepend(lazypath)
 local plugins = {
 	-- Utilities
 	"lambdalisue/suda.vim",
-	{
-		"kylechui/nvim-surround",
-		config = true,
-	},
+	"kylechui/nvim-surround",
 	{
 		"numToStr/Comment.nvim",
 		config = true,
