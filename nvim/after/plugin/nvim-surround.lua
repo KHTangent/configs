@@ -3,10 +3,12 @@ require("nvim-surround").setup({
 		["("] = false,
 		["["] = false,
 		["{"] = false,
+		["<"] = false,
 	},
 	aliases = {
 		["("] = ")",
 		["["] = "]",
 		["{"] = "}",
+		["<"] = ">",
 	},
 })
