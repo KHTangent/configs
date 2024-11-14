@@ -1,0 +1,10 @@
+{
+	"backtics": {
+		"prefix": "bt",
+		"body": "`$1`$0"
+	},
+	"uuid id": {
+		"prefix": "uuidid",
+		"body": "`id` UUID PRIMARY KEY UNIQUE DEFAULT uuid_generate_v4(),$0"
+	}
+}

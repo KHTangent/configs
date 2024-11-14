@@ -1,0 +1,20 @@
+{
+	"GetElementById": {
+		"prefix": "gebi", 
+		"body": [
+			"document.getElementById(\"$1\")$2"
+		]
+	},
+	"getInt": {
+		"prefix": "getInt", 
+		"body": [
+			"parseInt(document.getElementById(\"$1\").value)$2"
+		]
+	},
+	"GetRadioButton": {
+		"prefix": "getradio",
+		"body": [
+			"document.querySelector('input[name=\"$1\"]:checked').value;$2"
+		]
+	}
+}

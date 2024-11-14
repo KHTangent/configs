@@ -1,0 +1,57 @@
+{
+	"html page": {
+		"prefix": "htmlpage",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+				"\t<head>",
+					"\t\t<meta charset=\"utf-8\" />",
+					"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+					"\t\t<title>$1</title>",
+					"\t\t<link rel=\"stylesheet\" href=\"./style.css\">",
+				"\t</head>",
+				"\t<body>",
+					"\t\t$0",
+				"\t</body>",
+			"</html>\n"
+		]
+	}, 
+	"basic js test page": {
+		"prefix": "jsbasic",
+		"body": [
+			"<!DOCTYPE html>",
+			"<html lang=\"en\">",
+				"\t<head>",
+					"\t\t<meta charset=\"utf-8\" />",
+					"\t\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />",
+					"\t\t<title>$1</title>",
+					"\t\t<style>",
+					"\t\t\t",
+					"\t\t</style>",
+					"\t\t<script>",
+					"\t\t\twindow.onload = startup;",
+					"\t\t\t",
+					"\t\t\tfunction startup() {",
+					"\t\t\t\t",
+					"\t\t\t}",
+					"\t\t</script>",
+				"\t</head>",
+				"\t<body>",
+					"\t\t$0",
+				"\t</body>",
+			"</html>\n"
+		]
+	},
+	"Jinja Statement": {
+		"prefix": "jsta",
+		"body": "{% $1 %}$0"
+	},
+	"Jinja Expression": {
+		"prefix": "jexp",
+		"body": "{{ $1 }}$0"
+	},
+	"Jinja Comment": {
+		"prefix": "jcom",
+		"body": "{# $1 #}$0"
+	}
+}

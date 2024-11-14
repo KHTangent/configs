@@ -1,0 +1,14 @@
+{
+	"docs": {
+		"prefix": "docstring",
+		"body": [
+			"/// <summary>",
+			"/// $0",
+			"/// </summary>",
+			"/// <param name=\"$1\">$2</param>",
+			"/// <returns>",
+			"/// $3",
+			"/// </returns>"
+		]
+	}
+}

@@ -1,0 +1,13 @@
+{
+	"Main function": {
+		"prefix": "main()",
+		"body": [
+			"def main(): ",
+			"\t$0",
+			"\n",
+			"if __name__ == \"__main__\":",
+			"\tmain()",
+			""
+		]
+	}
+}

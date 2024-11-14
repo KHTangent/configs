@@ -1,0 +1,46 @@
+{
+	"tsconfig": {
+		"prefix": "tsconfig",
+		"body": [
+			"{",
+			"\t\"compilerOptions\": {",
+			"\t\t\"target\": \"es5\",",
+			"\t\t\"module\": \"commonjs\",",
+			"\t\t\"outDir\": \"./out\",",
+			"\t\t\"rootDir\": \"./src\",",
+			"\t\t\"strict\": true,",
+			"\t\t\"esModuleInterop\": true,",
+			"\t\t\"skipLibCheck\": true,",
+			"\t\t\"forceConsistentCasingInFileNames\": true",
+			"\t}",
+			"}"
+		]
+	},
+	"ts package.json": {
+		"prefix": "tspackage",
+		"body": [
+			"{",
+			"\t\"name\": \"$1\",",
+			"\t\"version\": \"0.1.0\",",
+			"\t\"description\": \"\",",
+			"\t\"main\": \"out/app.js\",",
+			"\t\"scripts\": {",
+			"\t\t\"build\": \"tsc\",",
+			"\t\t\"run\": \"node out/app.js\",",
+			"\t\t\"start\": \"npm run-script build && npm run-script run\"",
+			"\t},",
+			"\t\"repository\": {",
+			"\t\t\"type\": \"git\",",
+			"\t\t\"url\": \"git+https://gitlab.com/KHTangent/$1.git\"",
+			"\t},",
+			"\t\"keywords\": [$2],",
+			"\t\"author\": \"KHTangent\",",
+			"\t\"license\": \"MIT\",",
+			"\t\"bugs\": {",
+			"\t\t\"url\": \"https://gitlab.com/KHTangent/$1/issues\"",
+			"\t},",
+			"\t\"homepage\": \"https://gitlab.com/KHTangent/$1\"",
+			"}"
+		]
+	}
+}

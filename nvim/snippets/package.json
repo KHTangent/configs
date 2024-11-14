@@ -1,0 +1,77 @@
+{
+	"name": "snippets-khtangent",
+	"contributes": {
+		"snippets": [
+			{
+				"language": [
+					"csharp"
+				],
+				"path": "./csharp.json"
+			},
+			{
+				"language": [
+					"go"
+				],
+				"path": "./go.json"
+			},
+			{
+				"language": [
+					"html",
+					"htmlangular",
+					"vue"
+				],
+				"path": "./html.json"
+			},
+			{
+				"language": [
+					"javascript",
+					"typescript"
+				],
+				"path": "./javascript.json"
+			},
+			{
+				"language": [
+					"json"
+				],
+				"path": "./json.json"
+			},
+			{
+				"language": [
+					"latex"
+				],
+				"path": "./latex.json"
+			},
+			{
+				"language": [
+					"properties"
+				],
+				"path": "./properties.json"
+			},
+			{
+				"language": [
+					"python"
+				],
+				"path": "./python.json"
+			},
+			{
+				"language": [
+					"sql"
+				],
+				"path": "./sql.json"
+			},
+			{
+				"language": [
+					"typescript",
+					"vue"
+				],
+				"path": "./typescript.json"
+			},
+			{
+				"language": [
+					"vue"
+				],
+				"path": "./vue.json"
+			}
+		]
+	}
+}

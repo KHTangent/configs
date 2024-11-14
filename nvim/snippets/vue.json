@@ -1,0 +1,15 @@
+{
+	"Composenent": {
+		"prefix": "composenent",
+		"body": [
+			"<template>",
+			"\t$0",
+			"</template>",
+			"",
+			"<script setup lang=\"ts\">",
+			"",
+			"</script>",
+			""
+		]
+	}
+}

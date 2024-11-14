@@ -1,0 +1,196 @@
+{
+	"Norwegian setup": {
+		"prefix": "norsetup",
+		"body": [
+		"% !TEX program = xelatex",
+		"\\documentclass[norsk]{article}",
+		"\t% \\usepackage[utf8]{inputenc}",
+		"\t\\author{Eskil Dybvik}",
+		"\t\\date{Vår 2022}",
+		"\t\\title{$1}",
+		"\t\\usepackage{amsmath}",
+		"\t\\usepackage{hyperref}",
+		"\t\\usepackage{graphicx}",
+		"\t\\usepackage[a4paper]{geometry}",
+		"\t\\usepackage[norsk]{babel}",
+		"\t\\usepackage{amsfonts}\n\n",
+		"\\begin{document}",
+		"\\maketitle",
+		"\n$0\n",
+		"\\end{document}\n"
+		]
+	},
+	"English setup": {
+		"prefix": "engsetup",
+		"body": [
+		"% !TEX program = xelatex",
+		"\\documentclass{article}",
+		"\t% \\usepackage[utf8]{inputenc}",
+		"\t\\author{Eskil Dybvik}",
+		"\t\\date{Spring 2022}",
+		"\t\\title{$1}",
+		"\t\\usepackage{amsmath}",
+		"\t\\usepackage{hyperref}",
+		"\t\\usepackage{graphicx}",
+		"\t\\usepackage[a4paper]{geometry}",
+		"\t\\usepackage{amsfonts}\n\n",
+		"\\begin{document}",
+		"\\maketitle",
+		"\n$0\n",
+		"\\end{document}\n"
+		]
+	},
+	"Code setup": {
+		"prefix": "codesetup",
+		"body": [
+			"\\usepackage{xcolor}",
+			"\\usepackage{listings}",
+			"\\lstset{",
+			"\tbackgroundcolor=\\color[rgb]{0.95,0.95,0.92},",
+			"\tcommentstyle=\\color[rgb]{0,0.6,0},",
+			"\tkeywordstyle=\\color{magenta},",
+			"\tnumberstyle=\\ttfamily\\footnotesize\\color[rgb]{0.5,0.5,0.5},",
+			"\tstringstyle=\\color[rgb]{0.58,0,0.82},",
+			"\tbasicstyle=\\ttfamily\\footnotesize,",
+			"\tbreakatwhitespace=false,",
+			"\tbreaklines=true,",
+			"\tcaptionpos=b,",
+			"\tkeepspaces=true,",
+			"\tnumbers=left,",
+			"\tnumbersep=5pt,",
+			"\tshowspaces=false,",
+			"\tshowstringspaces=false,",
+			"\tshowtabs=false,",
+			"\ttabsize=2",
+			"}"
+		]
+	},
+	"minted setup": {
+		"prefix": "mintedsetup",
+		"body": [
+			"\\usepackage{minted}",
+			"\\setminted{",
+			"\tlinenos=true,",
+			"\tautogobble=true,",
+			"\ttabsize=4",
+			"}",
+			"\\renewcommand{\\theFancyVerbLine}{",
+			"\t\\sffamily\\textcolor[rgb]{0.6,0.6,0.6}{",
+			"\t\t\\scriptsize\\arabic{FancyVerbLine}",
+			"\t}",
+			"}"
+		]
+	},
+	"math": {
+		"prefix": "math",
+		"body": "\\[ $0 \\]"
+	},
+	"aligned": {
+		"prefix": "\\aligned",
+		"body": [
+			"\\begin{aligned}",
+			"\t$0",
+			"\\end{aligned}"
+		]
+	},
+	"Integral fra 0 til uendelig": {
+		"prefix": "intu",
+		"body": "\\int^\\infty_0 $0"
+	},
+	"Laplace": {
+		"prefix": "lapl",
+		"body": "\\int^\\infty_0 e^{-st}$1 dt $0"
+	},
+	"Inverse Laplace": {
+		"prefix": "invlap",
+		"body": "\\mathcal{L}^{-1}\\left( $1 \\right)$0"
+	},
+	"coefficient matrix": {
+		"prefix": "eqsys",
+		"body": [
+			"\\left[",
+			"\t\\begin{array}{@{}ccc|c@{}}",
+			"\t\t$1",
+			"\t\\end{array}",
+			"\\right]$0"
+		]
+	},
+	"Column Vector": {
+		"prefix": "colvec",
+		"body": "\\begin{bmatrix} $1 \\end{bmatrix}$0"
+	},
+	"Overline shortcut": {
+		"prefix": "ol",
+		"body": "\\overline{$1}$0"
+	},
+	"Projection": {
+		"prefix": "proj",
+		"body": "\\frac{\\langle $1, $2 \\rangle}{\\langle $1, $1 \\rangle}$1"
+	},
+	"Cardinal part": {
+		"prefix": "cardf",
+		"body": "\\left(\\frac{x-$2}{$1-$2}\\right)$0"
+	},
+	
+	"codeblock": {
+		"prefix": "codeblock",
+		"body": [
+			"\\begin{lstlisting}[language=$1]",
+			"$0",
+			"\\end{lstlisting}"
+		]
+	},
+	"Circled letters setup": {
+		"prefix": "circlesetup",
+		"body": [
+			"\\usepackage{tikz}",
+			"\\newcommand*\\circled[1]{\\tikz[baseline=(char.base)]{",
+			"\t\\node[shape=circle,draw,inner sep=2pt] (char) {#1};}}"
+		]
+	},
+	"Centered figure": {
+		"prefix": "figcenter",
+		"body": [
+			"\\begin{figure}[htb]",
+			"\t\\centering",
+			"\t\\includegraphics[width=\\textwidth]{$1}",
+			"\t\\caption{$2}",
+			"\t\\label{$3}",
+			"\\end{figure}",
+			"$0"
+		]
+	},
+	"Compact mod": {
+		"prefix": "\\cmod",
+		"body": "\\text{ mod }$0"
+	},
+	"minted codeblock": {
+		"prefix": "\\minted",
+		"body": [
+			"\\begin{minted}{$1}",
+			"\t$0",
+			"\\end{minted}"
+		]
+	},
+	"frame with figure": {
+		"prefix": "figframe",
+		"body": [
+			"\\subsection{$1}",
+			"\\begin{frame}",
+			"\t\\frametitle{$1}",
+			"\t\\begin{columns}",
+			"\t\t\\column{0.5\\textwidth}",
+			"\t\t\\begin{itemize}",
+			"\t\t\t\\item $0",
+			"\t\t\\end{itemize}",
+			"\t\t\\column{0.5\\textwidth}",
+			"\t\t\\begin{figure}[htb]",
+			"\t\t\t\\centering",
+			"\t\t\t\\includegraphics[width=\\textwidth]{$2}",
+			"\t\t\t\\label{fig:$3}",
+			"\t\t\\end{figure}",
+			"\t\\end{columns}",
+			"\\end{frame}"
+		]
+	}
+}

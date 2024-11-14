@@ -1,0 +1,23 @@
+{
+	"JSON field": {
+		"prefix": "jf",
+		"body": "$1 $2 `json:\"$3\"$0`"
+	},
+	"if err nil": {
+		"prefix": "iferr",
+		"body": [
+			"if err != nil {",
+			"\treturn nil, err",
+			"}",
+			"$0"
+		]
+	},
+	"http handler": {
+		"prefix": "handler",
+		"body": [
+			"func $1Handler(w http.ResponseWriter, r *http.Request) {",
+			"\t$0",
+			"}"
+		]
+	}
+}
