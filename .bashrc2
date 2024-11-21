@@ -15,6 +15,9 @@ alias gdbrun="gdb -ex run --batch --args"
 # Quicly calculate stuff
 alias c="numbat -e"
 
+# Add a track to playing Spotify queue
+alias spotify-queue="spt play -qtn"
+
 if [ -x "$(command -v eza)" ]; then
 	alias ll="eza -lahbg --git"
 	alias ls="eza"
