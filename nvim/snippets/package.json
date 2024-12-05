@@ -37,6 +37,8 @@
 			},
 			{
 				"language": [
+					"tex",
+					"plaintex",
 					"latex"
 				],
 				"path": "./latex.json"
