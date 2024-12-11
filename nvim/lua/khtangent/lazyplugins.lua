@@ -51,6 +51,10 @@ local plugins = {
 			require("code-playground").setup()
 		end
 	},
+	{
+		"Goose97/timber.nvim",
+		config = true,
+	},
 
 	-- Git plugins
 	{
