@@ -17,6 +17,12 @@ vim.keymap.set("n", "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = tr
 vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
+-- Scroll around the screen
+vim.keymap.set({"n", "v", "i"}, "<M-S-h>", "zh", {desc = "Scroll left"})
+vim.keymap.set({"n", "v", "i"}, "<M-S-l>", "zl", {desc = "Scroll right"})
+vim.keymap.set({"n", "v", "i"}, "<M-S-j>", "<C-e>", {desc = "Scroll up"})
+vim.keymap.set({"n", "v", "i"}, "<M-S-k>", "<C-y>", {desc = "Scroll down"})
+
 vim.keymap.set("x", "<leader>p", [["_dP]], {desc = "Replace without overwriting yank"})
 vim.keymap.set({"n", "v"}, "<leader>y", [["+y]], {desc = "Yank to system clipboard"})
 
