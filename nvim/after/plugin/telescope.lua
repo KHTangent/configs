@@ -21,7 +21,17 @@ vim.keymap.set("n", "<leader>cf", builtin.quickfix, {desc = "Find quickfix"})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {desc = "Find help pages"})
 vim.keymap.set("n", "<leader>fs", builtin.symbols, {desc = "Find symbols"})
 vim.keymap.set("n", "<leader>fw", builtin.lsp_workspace_symbols, {desc = "Find workspace symbols"})
+vim.keymap.set("n", "<leader>ffw", function ()
+	builtin.lsp_workspace_symbols({
+		symbols = "function",
+	})
+end, {desc = "Find document functions"})
 vim.keymap.set("n", "<leader>fd", builtin.lsp_document_symbols, {desc = "Find document symbols"})
+vim.keymap.set("n", "<leader>ffd", function ()
+	builtin.lsp_document_symbols({
+		symbols = "function",
+	})
+end, {desc = "Find document functions"})
 vim.keymap.set("n", "<leader>fi", ":Telescope import<cr>", {desc = "Find imports"})
 
 -- From https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-1679797700
