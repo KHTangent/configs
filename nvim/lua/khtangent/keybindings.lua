@@ -18,8 +18,8 @@ vim.keymap.set("n", "<C-d>", "<C-d>zz")
 vim.keymap.set("n", "<C-u>", "<C-u>zz")
 
 -- Scroll around the screen
-vim.keymap.set({"n", "v", "i"}, "<M-S-h>", "zh", {desc = "Scroll left"})
-vim.keymap.set({"n", "v", "i"}, "<M-S-l>", "zl", {desc = "Scroll right"})
+vim.keymap.set({"n", "v", "i"}, "<M-S-h>", "4zh", {desc = "Scroll left"})
+vim.keymap.set({"n", "v", "i"}, "<M-S-l>", "4zl", {desc = "Scroll right"})
 vim.keymap.set({"n", "v", "i"}, "<M-S-j>", "<C-e>", {desc = "Scroll up"})
 vim.keymap.set({"n", "v", "i"}, "<M-S-k>", "<C-y>", {desc = "Scroll down"})
 
