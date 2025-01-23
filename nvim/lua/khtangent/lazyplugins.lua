@@ -46,10 +46,12 @@ local plugins = {
 		build = "make",
 	},
 	{
-		"GustavEikaas/code-playground.nvim",
+		"michaelb/sniprun",
+		branch = "master",
+		build = "sh install.sh 1",
 		config = function()
-			require("code-playground").setup()
-		end
+			require("sniprun").setup({})
+		end,
 	},
 	{
 		"Goose97/timber.nvim",
