@@ -82,7 +82,7 @@ local plugins = {
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
 	},
-	"piersolenski/telescope-import.nvim",
+	"Marskey/telescope-sg",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",

@@ -3,7 +3,7 @@ local builtin = require('telescope.builtin')
 
 telescope.load_extension("fzf")
 telescope.load_extension("ui-select")
-telescope.load_extension("import")
+telescope.load_extension("ast_grep")
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {desc = "Find in folder"})
 vim.keymap.set("n", "<C-p>", function ()
@@ -32,7 +32,7 @@ vim.keymap.set("n", "<leader>ffd", function ()
 		symbols = "function",
 	})
 end, {desc = "Find document functions"})
-vim.keymap.set("n", "<leader>fi", ":Telescope import<cr>", {desc = "Find imports"})
+vim.keymap.set("n", "<leader>fa", ":Telescope ast_grep<cr>", {desc = "Grep in AST"})
 
 -- From https://github.com/nvim-telescope/telescope.nvim/issues/1048#issuecomment-1679797700
 local select_one_or_multi = function(prompt_bufnr)
@@ -76,8 +76,11 @@ telescope.setup({
 		}
 	},
 	extensions = {
-		import = {
-			insert_at_top = true,
+		ast_grep = {
+			command = {
+				"sg",
+				"--json=stream",
+			},
 		},
 	},
 })
