@@ -1,8 +1,25 @@
 [core]
 	editor = nvim
 	pager = delta
+[branch]
+	sort = -committerdate
+[tag]
+	sort = version:refname
+[diff]
+	algorithm = histogram
+	renames = true
+[push]
+	followTags = true
+[rerere]
+	enabled = true
+	autoupdate = true
 [interactive]
 	diffFilter = delta --color-only --features=interactive
+[commit]
+	gpgsign = true
+	verbose = true
+[init]
+	defaultBranch = master
 [alias]
 	lol = log --oneline --graph --decorate
 	st = status
@@ -27,10 +44,6 @@
 	signingkey = 3745C3E42DA9F1D2
 	email = contact@khtangent.com
 	name = KHTangent
-[commit]
-	gpgsign = true
-[init]
-	defaultBranch = master
 [delta]
 	features = decorations
 	line-numbers = true
