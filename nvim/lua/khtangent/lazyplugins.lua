@@ -180,10 +180,6 @@ local plugins = {
 
 	-- Fun
 	{
-		"andweeb/presence.nvim",
-		config = true,
-	},
-	{
 		"tamton-aquib/duck.nvim",
 		config = function()
 			vim.keymap.set("n", "<leader>dd", function() require("duck").hatch("󰇥") end, {desc="Hatch duck"})
