@@ -1,3 +1,20 @@
+[font]
+size = 18.0
+
+[font.normal]
+family = "FiraCode Nerd Font Mono"
+style = "Regular"
+
+[window]
+opacity = 0.925
+
+[window.dimensions]
+columns = 80
+lines = 24
+
+
+# Taken from https://github.com/dracula/alacritty
+# Copyright (c) 2018 Dracula Theme under MIT License
 [colors.bright]
 black = "#6272a4"
 blue = "#d6acff"
@@ -58,14 +75,3 @@ text = "CellForeground"
 [colors.vi_mode_cursor]
 cursor = "CellForeground"
 text = "CellBackground"
-
-[font]
-size = 16.0
-
-[font.normal]
-family = "FiraCode Nerd Font Mono"
-style = "Regular"
-
-[window.dimensions]
-columns = 80
-lines = 24
