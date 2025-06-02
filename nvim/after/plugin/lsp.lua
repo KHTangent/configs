@@ -15,7 +15,6 @@ mason_lspconfig.setup({
 		"haxe_language_server",
 		"lua_ls",
 		"pylsp",
-		"volar",
 		"vtsls",
 		"yamlls",
 	},
