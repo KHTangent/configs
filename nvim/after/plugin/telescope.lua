@@ -7,9 +7,15 @@ telescope.load_extension("ast_grep")
 
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {desc = "Find in folder"})
 vim.keymap.set("n", "<C-p>", function ()
-	builtin.git_files({
-		recurse_submodules = true,
-	})
+	local current_path = vim.loop.cwd() .. "/.git"
+	local is_git_repo, _err = vim.loop.fs_stat(current_path)
+	if is_git_repo then
+		builtin.git_files({
+			recurse_submodules = true,
+		})
+	else
+		builtin.find_files()
+	end
 end, {desc = "Find in Git files"})
 vim.keymap.set("n", "<leader>gs", builtin.git_status, {desc = "View git status"})
 
