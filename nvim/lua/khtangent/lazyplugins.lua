@@ -105,7 +105,7 @@ local plugins = {
 	},
 	"ojroques/nvim-bufdel",
 
-	-- LSP and such
+	-- Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
@@ -113,36 +113,15 @@ local plugins = {
 		},
 		run = ":TSUpdate",
 	},
+
+	-- LSP server installation and configs
 	{
-		'VonHeikemen/lsp-zero.nvim',
-		branch = 'v3.x',
+		"mason-org/mason-lspconfig.nvim",
+		opts = {},
 		dependencies = {
-			-- LSP Support
-			{"neovim/nvim-lspconfig"},
-			{"williamboman/mason.nvim"},
-			{"williamboman/mason-lspconfig.nvim"},
-
-			-- Autocompletion
-			{"hrsh7th/nvim-cmp"},
-			{"hrsh7th/cmp-nvim-lsp"},
-			{"hrsh7th/cmp-buffer"},
-			{"hrsh7th/cmp-path"},
-			{"saadparwaiz1/cmp_luasnip"},
-			{"hrsh7th/cmp-nvim-lua"},
-			{"onsails/lspkind.nvim"},
-
-			-- Snippets
-			{"L3MON4D3/LuaSnip"},
-			{"rafamadriz/friendly-snippets"},
-		}
-	},
-	{
-		"folke/trouble.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-	},
-	{
-		"stevearc/conform.nvim",
-		opts = {}
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 	},
 	{
 		"nvimdev/lspsaga.nvim",
@@ -151,6 +130,28 @@ local plugins = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
 		}
+	},
+
+	-- Autocompletion
+	"hrsh7th/nvim-cmp",
+	"hrsh7th/cmp-nvim-lsp",
+	"hrsh7th/cmp-buffer",
+	"hrsh7th/cmp-path",
+	"saadparwaiz1/cmp_luasnip",
+	"hrsh7th/cmp-nvim-lua",
+	"onsails/lspkind.nvim",
+
+	-- Snippets
+	"L3MON4D3/LuaSnip",
+	"rafamadriz/friendly-snippets",
+
+	{
+		"folke/trouble.nvim",
+		dependencies = "nvim-tree/nvim-web-devicons",
+	},
+	{
+		"stevearc/conform.nvim",
+		opts = {}
 	},
 
 	-- Visual

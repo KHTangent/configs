@@ -1,103 +1,97 @@
-local lsp_zero = require("lsp-zero")
-local lspconfig = require("lspconfig")
-local mason = require("mason")
 local mason_lspconfig = require("mason-lspconfig")
 local telescope_builtin = require("telescope.builtin")
 local cmp = require("cmp")
-local cmp_action = lsp_zero.cmp_action()
+local luasnip = require("luasnip")
 
-mason.setup({})
 mason_lspconfig.setup({
 	ensure_installed = {
 		"bashls",
 		"cssls",
 		"emmet_ls",
-		"haxe_language_server",
 		"lua_ls",
 		"pylsp",
 		"vtsls",
 		"yamlls",
 	},
-	handlers = {
-		function(server_name)
-			require('lspconfig')[server_name].setup({})
-		end,
+	automatic_enable = {
+        exclude = {
+            "clangd",
+            "rust_analyzer"
+        }
+    }
+})
+if vim.fn.executable("clangd") then
+	vim.lsp.enable("clangd")
+end
+if vim.fn.executable("rust-analyzer") then
+	vim.lsp.enable("rust-analyzer")
+end
 
-		-- Fix Undefined global 'vim'
-		lua_ls = function ()
-			lspconfig.lua_ls.setup({
-				settings = {
-					Lua = {
-						diagnostics = {
-							globals = { 'vim' }
-						}
-					}
+vim.lsp.config("lua_ls", {
+	settings = {
+		Lua = {
+			runtime = {
+				version = "LuaJIT",
+			},
+			diagnostics = {
+				globals = { "vim", "require" }
+			},
+			workspace = {
+				library = vim.api.nvim_get_runtime_file("", true),
+			},
+			telemetry = {
+				enable = false,
+			},
+		}
+	}
+})
+vim.lsp.config("pylsp", {
+	settings = {
+		pylsp = {
+			plugins = {
+				pycodestyle = {
+					enabled = false
 				}
-			})
-		end,
-
-		pylsp = function ()
-			lspconfig.pylsp.setup({
-				settings = {
-					pylsp = {
-						plugins = {
-							pycodestyle = {
-								enabled = false
-							}
-						}
-					}
-				}
-			})
-		end,
-
-		vtsls = function ()
-			lspconfig.vtsls.setup({
-				settings = {
-					vtsls = {
-						tsserver = {
-							globalPlugins = {},
-						},
-					},
-				},
-				before_init = function(params, config)
-					-- From https://github.com/yioneko/vtsls/issues/148#issuecomment-2119744901
-					local result = vim.system(
-						{"npm", "query", "#vue"},
-						{
-							cwd = params.workspaceFolders[1].name,
-							text = true,
-						}
-					):wait()
-					if result.stdout ~= "[]" then
-						local vuePluginConfig = {
-							name = "@vue/typescript-plugin",
-							location = require("mason-registry")
-								.get_package("vue-language-server")
-								:get_install_path() .. "/node_modules/@vue/language-server",
-							languages = {"vue"},
-							configNamespace = "typescript",
-							enableForWorkspaceTypeScriptVersions = true,
-						}
-						table.insert(config.settings.vtsls.tsserver.globalPlugins, vuePluginConfig)
-					end
-				end,
-				filetypes = {
-					"javascript",
-					"typescript",
-					"vue",
-				},
-			})
+			}
+		}
+	}
+})
+vim.lsp.config("", {
+	settings = {
+		vtsls = {
+			tsserver = {
+				globalPlugins = {},
+			},
+		},
+	},
+	before_init = function(params, config)
+		-- From https://github.com/yioneko/vtsls/issues/148#issuecomment-2119744901
+		local result = vim.system(
+			{"npm", "query", "#vue"},
+			{
+				cwd = params.workspaceFolders[1].name,
+				text = true,
+			}
+		):wait()
+		if result.stdout ~= "[]" then
+			local vuelspath = vim.fn.expand("$MASON/packages/vue-language-server")
+			local vuePluginConfig = {
+				name = "@vue/typescript-plugin",
+				location = vuelspath .. "/node_modules/@vue/language-server",
+				languages = {"vue"},
+				configNamespace = "typescript",
+				enableForWorkspaceTypeScriptVersions = true,
+			}
+			table.insert(config.settings.vtsls.tsserver.globalPlugins, vuePluginConfig)
 		end
+	end,
+	filetypes = {
+		"javascript",
+		"typescript",
+		"vue",
 	},
 })
 
-
-if vim.fn.executable("clangd") then
-	lspconfig.clangd.setup({})
-end
-if vim.fn.executable("rust-analyzer") then
-	lspconfig.rust_analyzer.setup({})
-end
 
 
 require('luasnip.loaders.from_vscode').lazy_load()
@@ -106,8 +100,20 @@ require('luasnip.loaders.from_vscode').lazy_load({
 })
 
 local cmp_mappings = cmp.mapping.preset.insert({
-	['<C-d>'] = cmp_action.luasnip_jump_forward(),
-	['<C-b>'] = cmp_action.luasnip_jump_backward(),
+	['<C-d>'] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(1) then
+			luasnip.jump(1)
+		else
+			fallback()
+		end
+	end),
+	['<C-b>'] = cmp.mapping(function(fallback)
+		if luasnip.jumpable(-1) then
+			luasnip.jump(-1)
+		else
+			fallback()
+		end
+	end),
 	["<CR>"] = cmp.mapping.confirm({select = true}),
 	["<C-y>"] = cmp.mapping.confirm({select = true}),
 	["<C-e>"] = cmp.mapping.abort(),
@@ -162,49 +168,52 @@ cmp.setup({
 	},
 })
 
-lsp_zero.on_attach(function(_, bufnr)
-	vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Go to definition",
-	})
-	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {
-		buffer = bufnr,
-		remap = false,
-		desc = "View signature help",
-	})
-	vim.keymap.set("n", "<leader>vw", telescope_builtin.lsp_workspace_symbols, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Workspace symbol",
-	})
-	vim.keymap.set("n", "<leader>vr", telescope_builtin.lsp_references, {
-		buffer = bufnr,
-		remap = false,
-		desc = "View references",
-	})
-	vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Signature help",
-	})
-	vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.hover() end, {
-		buffer = bufnr,
-		remap = false,
-		desc = "Display hover",
-	})
+vim.api.nvim_create_autocmd('LspAttach', {
+	callback = function(event)
+		local bufnr = event.buf
+		vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, {
+			buffer = bufnr,
+			remap = false,
+			desc = "Go to definition",
+		})
+		vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, {
+			buffer = bufnr,
+			remap = false,
+			desc = "View signature help",
+		})
+		vim.keymap.set("n", "<leader>vw", telescope_builtin.lsp_workspace_symbols, {
+			buffer = bufnr,
+			remap = false,
+			desc = "Workspace symbol",
+		})
+		vim.keymap.set("n", "<leader>vr", telescope_builtin.lsp_references, {
+			buffer = bufnr,
+			remap = false,
+			desc = "View references",
+		})
+		vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, {
+			buffer = bufnr,
+			remap = false,
+			desc = "Signature help",
+		})
+		vim.keymap.set("i", "<C-k>", function() vim.lsp.buf.hover() end, {
+			buffer = bufnr,
+			remap = false,
+			desc = "Display hover",
+		})
 
-	-- From https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
-	for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
-		local default_diagnostic_handler = vim.lsp.handlers[method]
-		vim.lsp.handlers[method] = function(err, result, context)
-			if err ~= nil and err.code == -32802 then
-				return
+		-- From https://github.com/neovim/neovim/issues/30985#issuecomment-2447329525
+		for _, method in ipairs({ 'textDocument/diagnostic', 'workspace/diagnostic' }) do
+			local default_diagnostic_handler = vim.lsp.handlers[method]
+			vim.lsp.handlers[method] = function(err, result, context)
+				if err ~= nil and err.code == -32802 then
+					return
+				end
+				return default_diagnostic_handler(err, result, context)
 			end
-			return default_diagnostic_handler(err, result, context)
 		end
-	end
-end)
+	end,
+})
 
 vim.diagnostic.config({
 	virtual_text = true
