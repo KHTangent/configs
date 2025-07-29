@@ -2,7 +2,8 @@ require("neo-tree").setup({
 	close_if_last_window = true,
 	enable_git_status = true,
 	window = {
-		width = 30
+		position = "left",
+		width = 30,
 	},
 	filesystem = {
 		filtered_items = {
@@ -19,5 +20,4 @@ require("neo-tree").setup({
 	}
 })
 vim.keymap.set("n", "\\", ":Neotree reveal<cr>", {desc = "Show NeoTree"})
-vim.keymap.set("n", "<leader>b", ":Neotree float buffers<cr>", {desc = "NeoTree show buffers"})
 

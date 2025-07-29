@@ -85,7 +85,7 @@ local plugins = {
 	"Marskey/telescope-sg",
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v2.x",
+		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-tree/nvim-web-devicons",
@@ -104,6 +104,11 @@ local plugins = {
 		end
 	},
 	"ojroques/nvim-bufdel",
+	{
+		"folke/edgy.nvim",
+		event = "VeryLazy",
+		opts = {}
+	},
 
 	-- Treesitter
 	{
@@ -191,7 +196,17 @@ local plugins = {
 			vim.keymap.set("n", "<leader>dk", function() require("duck").cook() end, {desc="Kill one duck"})
 			vim.keymap.set("n", "<leader>da", function() require("duck").cook_all() end, {desc="Kill all ducks"})
 		end
-	}
+	},
+
+	-- We use EY AY (I hate it)
+	{
+		"olimorris/codecompanion.nvim",
+		opts = {},
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+		},
+	},
 }
 
 require("lazy").setup(plugins)
