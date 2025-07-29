@@ -104,11 +104,6 @@ local plugins = {
 		end
 	},
 	"ojroques/nvim-bufdel",
-	{
-		"folke/edgy.nvim",
-		event = "VeryLazy",
-		opts = {}
-	},
 
 	-- Treesitter
 	{
