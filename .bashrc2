@@ -32,13 +32,18 @@ export GPG_TTY=$(tty)
 export BAT_THEME="Dracula"
 
 if [ -x "$(command -v fzf)" ]; then
-	source /usr/share/doc/fzf/examples/key-bindings.bash
+	if command -v fzf-share >/dev/null; then
+		source "$(fzf-share)/key-bindings.bash"
+		source "$(fzf-share)/completion.bash"
+	else
+		source /usr/share/doc/fzf/examples/key-bindings.bash
+	fi
 	if [ -f "/usr/share/doc/fzf/examples/completion.bash" ]; then
 		source /usr/share/doc/fzf/examples/completion.bash
 	fi
 fi
 
-if [ -x "$(command -v starship)" ]; then
+if [ -x "$(command -v starship)" ] && [ "$TERM" != "dumb" ]; then
 	eval "$(starship init bash)"
 fi
 
