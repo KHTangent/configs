@@ -13,19 +13,19 @@ mason_lspconfig.setup({
 		"vtsls",
 		"yamlls",
 	},
-	automatic_enable = {
-        exclude = {
-            "clangd",
-            "rust_analyzer"
-        }
-    }
 })
-if vim.fn.executable("clangd") then
-	vim.lsp.enable("clangd")
+
+local function enable_ls_if_executable(name, configname)
+	configname = configname or name
+	if vim.fn.executable(name) then
+		vim.lsp.enable(configname)
+	end
 end
-if vim.fn.executable("rust-analyzer") then
-	vim.lsp.enable("rust-analyzer")
-end
+enable_ls_if_executable("clangd")
+enable_ls_if_executable("nil")
+enable_ls_if_executable("rust-analyzer", "rust_analyzer")
+enable_ls_if_executable("markdown-oxide", "markdown_oxide")
+enable_ls_if_executable("openscad-lsp", "openscad_lsp")
 
 vim.lsp.config("lua_ls", {
 	settings = {
