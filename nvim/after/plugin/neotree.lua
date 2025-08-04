@@ -11,11 +11,12 @@ require("neo-tree").setup({
 			hide_gitignored = false,
 			hide_hidden = false
 		},
-		follow_current_file = true,
+		follow_current_file = {
+			enable = true,
+		},
 		hijack_netrw_behavior = "open_default"
 	},
 	buffers = {
-		follow_current_file = true,
 		group_empty_dirs = false
 	}
 })
