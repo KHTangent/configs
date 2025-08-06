@@ -11,7 +11,7 @@ require("codecompanion").setup({
 						default = 16384,
 					},
 					keep_alive = {
-						default = "60m",
+						default = "5m",
 					}
 				},
 			})
