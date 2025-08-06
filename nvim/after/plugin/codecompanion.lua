@@ -1,16 +1,31 @@
 require("codecompanion").setup({
+	adapters = {
+		localgood = function ()
+			return require("codecompanion.adapters").extend("ollama", {
+				name = "localgood",
+				schema = {
+					model = {
+						default = "gpt-oss:20b",
+					},
+					num_ctx = {
+						default = 16384,
+					},
+					keep_alive = {
+						default = "60m",
+					}
+				},
+			})
+		end
+	},
 	strategies = {
 		chat = {
-			adapter = "ollama",
-			model = "qwen2.5-coder:7b",
+			adapter = "localgood",
 		},
 		inline = {
-			adapter = "ollama",
-			model = "qwen2.5-coder:7b",
+			adapter = "localgood",
 		},
 		cmd = {
-			adapter = "ollama",
-			model = "qwen2.5-coder:7b",
+			adapter = "localgood",
 		},
 	},
 	display = {
