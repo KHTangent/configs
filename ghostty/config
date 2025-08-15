@@ -1,0 +1,30 @@
+# Run `ghostty +show-config --default --docs` to view a list of
+# all available config options and their default values.
+#
+# Additionally, each config option is also explained in detail
+# on Ghostty's website, at https://ghostty.org/docs/config.
+
+# Config syntax crash course
+# ==========================
+# # The config file consists of simple key-value pairs,
+# # separated by equals signs.
+
+
+font-family = FiraCode Nerd Font Mono
+font-size = 18.0
+
+theme = dracula
+background-opacity = 0.9
+cursor-style = block
+cursor-style-blink = false
+shell-integration-features = no-cursor
+
+# Only keep keybinds I use
+keybind = clear
+keybind = ctrl+shift+v=paste_from_clipboard
+keybind = ctrl+shift+c=copy_to_clipboard
+keybind = ctrl+enter=toggle_fullscreen
+
+clipboard-read = allow
+clipboard-write = allow
+
