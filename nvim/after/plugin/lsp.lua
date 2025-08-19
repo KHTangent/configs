@@ -56,7 +56,7 @@ vim.lsp.config("pylsp", {
 		}
 	}
 })
-vim.lsp.config("", {
+vim.lsp.config("vtsls", {
 	settings = {
 		vtsls = {
 			tsserver = {
