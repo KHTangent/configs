@@ -1,5 +1,15 @@
 local conform = require("conform")
-conform.setup()
+
+local prettier_list = {"prettierd", "prettier", stop_after_first = true}
+
+conform.setup({
+	formatters_by_ft = {
+		javascript = prettier_list,
+		typescript = prettier_list,
+		html = prettier_list,
+		vue = prettier_list,
+	},
+})
 
 vim.keymap.set("n", "<S-A-F>", function ()
 	conform.format({lsp_fallback = true})
