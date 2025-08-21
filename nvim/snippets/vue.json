@@ -11,5 +11,29 @@
 			"</script>",
 			""
 		]
+	},
+	"Composenent-i18n": {
+		"prefix": "composenent-i18n",
+		"body": [
+			"<template>",
+			"\t<v-container>",
+			"\t</v-container>",
+			"</template>",
+			"",
+			"<i18n>",
+			"{",
+			"\t\"no\": {",
+			"\t},",
+			"\t\"en\": {",
+			"\t}",
+			"}",
+			"</i18n>",
+			"",
+			"<script lang=\"ts\" setup>",
+			"const { t } = useI18n({",
+			"\tuseScope: \"local\",",
+			"});",
+			"</script>"
+		]
 	}
 }
