@@ -135,6 +135,7 @@ cmp.setup({
 		{name = "path"},
 		{name = "luasnip"},
 		{name = "nvim_lua"},
+		{name = "emoji"},
 	},
 	formatting = {
 		expandable_indicator = true,
