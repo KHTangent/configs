@@ -27,6 +27,7 @@ enable_ls_if_executable("rust-analyzer", "rust_analyzer")
 enable_ls_if_executable("markdown-oxide", "markdown_oxide")
 enable_ls_if_executable("openscad-lsp", "openscad_lsp")
 
+
 vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
@@ -45,6 +46,7 @@ vim.lsp.config("lua_ls", {
 		}
 	}
 })
+
 vim.lsp.config("pylsp", {
 	settings = {
 		pylsp = {
@@ -56,6 +58,7 @@ vim.lsp.config("pylsp", {
 		}
 	}
 })
+
 vim.lsp.config("vtsls", {
 	settings = {
 		vtsls = {
@@ -92,6 +95,27 @@ vim.lsp.config("vtsls", {
 	},
 })
 
+vim.lsp.config("tinymist", {
+	filetypes = { "typst" },
+	settings = {
+	},
+	on_attach = function(client, bufnr)
+		vim.keymap.set("n", "<leader>tp", function()
+			client:exec_cmd({
+				title = "pin",
+				command = "tinymist.pinMain",
+				arguments = { vim.api.nvim_buf_get_name(0) },
+			}, { bufnr = bufnr })
+		end, { desc = "Tinymist Pin", noremap = true })
+		vim.keymap.set("n", "<leader>tu", function()
+			client:exec_cmd({
+				title = "unpin",
+				command = "tinymist.pinMain",
+				arguments = { vim.v.null },
+			}, { bufnr = bufnr })
+		end, { desc = "Tinymist Unpin", noremap = true })
+	end,
+})
 
 
 require('luasnip.loaders.from_vscode').lazy_load()
