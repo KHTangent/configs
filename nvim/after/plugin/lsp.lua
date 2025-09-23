@@ -26,6 +26,7 @@ enable_ls_if_executable("nil")
 enable_ls_if_executable("rust-analyzer", "rust_analyzer")
 enable_ls_if_executable("markdown-oxide", "markdown_oxide")
 enable_ls_if_executable("openscad-lsp", "openscad_lsp")
+enable_ls_if_executable("gopls")
 
 
 vim.lsp.config("lua_ls", {
