@@ -213,16 +213,6 @@ local plugins = {
 			vim.keymap.set("n", "<leader>da", function() require("duck").cook_all() end, {desc="Kill all ducks"})
 		end
 	},
-
-	-- We use EY AY (I hate it)
-	{
-		"olimorris/codecompanion.nvim",
-		opts = {},
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-treesitter/nvim-treesitter",
-		},
-	},
 }
 
 require("lazy").setup(plugins)
