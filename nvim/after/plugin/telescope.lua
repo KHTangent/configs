@@ -17,6 +17,17 @@ vim.keymap.set("n", "<C-p>", function ()
 		builtin.find_files()
 	end
 end, {desc = "Find in Git files"})
+vim.keymap.set("n", "<C-S-p>", function ()
+	local current_path = vim.loop.cwd() .. "/.git"
+	local is_git_repo, _err = vim.loop.fs_stat(current_path)
+	if is_git_repo then
+		builtin.git_files({
+			recurse_submodules = false,
+		})
+	else
+		builtin.find_files()
+	end
+end, {desc = "Find in Git files w/o submodules"})
 vim.keymap.set("n", "<leader>gs", builtin.git_status, {desc = "View git status"})
 
 vim.keymap.set("n", "<leader>ps", builtin.live_grep, {desc = "Grep in project"})
