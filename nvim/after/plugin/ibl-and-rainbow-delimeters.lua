@@ -39,6 +39,8 @@ vim.g.rainbow_delimiters = {
 	blacklist = {
 		"html",
 		"vue",
+		"svelte",
+		"xml",
 		"markdown",
 	},
 	query = {
