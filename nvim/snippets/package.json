@@ -57,6 +57,12 @@
 			},
 			{
 				"language": [
+					"rust"
+				],
+				"path": "./rust.json"
+			},
+			{
+				"language": [
 					"sql"
 				],
 				"path": "./sql.json"

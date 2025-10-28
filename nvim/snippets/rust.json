@@ -1,0 +1,23 @@
+{
+	"Bevy component": {
+		"prefix": "bcomp",
+		"body": [
+			"#[derive(Component)]",
+			"struct $0"
+		]
+	},
+	"Bevy query with": {
+		"prefix": "bqueryw",
+		"body": "$1: Query<&$2, With<$3>>,$0"
+	},
+	"Bevy states": {
+		"prefix": "bstates",
+		"body": [
+			"#[derive(States, Debug, Clone, PartialEq, Eq, Hash, Default)]",
+			"enum $1States {",
+			"#[default]",
+			"$2,",
+			"}"
+		]
+	}
+}
