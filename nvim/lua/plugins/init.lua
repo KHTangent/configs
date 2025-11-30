@@ -85,18 +85,6 @@ return {
 		opts = {},
 	},
 
-	-- Fun
-	{
-		"tamton-aquib/duck.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>dd", function() require("duck").hatch("󰇥") end, {desc="Hatch duck"})
-			vim.keymap.set("n", "<leader>dm", function() require("duck").hatch("ඞ") end, {desc="Hatch mogus"})
-			vim.keymap.set("n", "<leader>dt", function() require("duck").hatch("") end, {desc="Hatch dragon"})
-			vim.keymap.set("n", "<leader>dk", function() require("duck").cook() end, {desc="Kill one duck"})
-			vim.keymap.set("n", "<leader>da", function() require("duck").cook_all() end, {desc="Kill all ducks"})
-		end
-	},
-
 	-- Testing out local AI
 	{
 		"olimorris/codecompanion.nvim",
