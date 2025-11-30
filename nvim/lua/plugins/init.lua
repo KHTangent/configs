@@ -1,16 +1,10 @@
+---@type LazySpec
 return {
-	{ import = "plugins.utilities" },
 	{ import = "plugins.git" },
 	{ import = "plugins.navigation" },
-
-	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter-textobjects",
-		},
-		run = ":TSUpdate",
-	},
+	{ import = "plugins.code" },
+	{ import = "plugins.utilities" },
+	{ import = "plugins.visual" },
 
 	-- LSP server installation and configs
 	{
@@ -51,38 +45,6 @@ return {
 	{
 		"stevearc/conform.nvim",
 		opts = {}
-	},
-
-	-- Visual
-	{
-		"Mofiqul/dracula.nvim",
-		config = function()
-			require("dracula").setup({
-				transparent_bg = true
-			})
-			vim.cmd[[colorscheme dracula]]
-		end
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-		dependencies = {"nvim-tree/nvim-web-devicons", opt = true},
-	},
-	{
-		"NvChad/nvim-colorizer.lua",
-		config = function()
-			require("colorizer").setup()
-		end
-	},
-	"hiphish/rainbow-delimiters.nvim",
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		main = "ibl",
-		opts = {},
-	},
-	{
-		"MeanderingProgrammer/render-markdown.nvim",
-		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
-		opts = {},
 	},
 
 	-- Testing out local AI
