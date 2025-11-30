@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
 	"nvim-neo-tree/neo-tree.nvim",
 	branch = "v3.x",
@@ -10,6 +11,7 @@ return {
 	init = function()
 		vim.g.neo_tree_remove_legacy_commands = 1
 	end,
+	---@type neotree.Config
 	opts = {
 		close_if_last_window = true,
 		enable_git_status = true,

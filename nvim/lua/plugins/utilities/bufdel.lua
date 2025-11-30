@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
 	"ojroques/nvim-bufdel",
 	keys = {

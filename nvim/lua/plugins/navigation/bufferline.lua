@@ -1,3 +1,4 @@
+---@type LazySpec
 return {
 	"akinsho/bufferline.nvim",
 	dependencies = {
@@ -8,6 +9,7 @@ return {
 	init = function()
 		vim.opt.termguicolors = true
 	end,
+	---@type bufferline.UserConfig
 	opts = {
 		options = {
 			close_command = "BufDel %d",
