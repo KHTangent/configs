@@ -1,55 +1,7 @@
 return {
 	{ import = "plugins.utilities" },
-
-	-- Git plugins
-	{
-		"lewis6991/gitsigns.nvim",
-		config = function ()
-			require("gitsigns").setup {
-				current_line_blame = true,
-				current_line_blame_opts = {
-					delay = 250,
-				}
-			}
-		end
-	},
-
-	-- Navigation
-	{
-		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-		}
-	},
-	"nvim-telescope/telescope-ui-select.nvim",
-	"nvim-telescope/telescope-symbols.nvim",
-	{
-		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "make",
-	},
-	"Marskey/telescope-sg",
-	{
-		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"nvim-tree/nvim-web-devicons",
-			"MunifTanjim/nui.nvim",
-		},
-		config = function()
-			vim.g.neo_tree_remove_legacy_commands = 1
-		end
-	},
-	{
-		"akinsho/bufferline.nvim",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			vim.opt.termguicolors = true
-			require("bufferline").setup{}
-		end
-	},
-	"ojroques/nvim-bufdel",
+	{ import = "plugins.git" },
+	{ import = "plugins.navigation" },
 
 	-- Treesitter
 	{
