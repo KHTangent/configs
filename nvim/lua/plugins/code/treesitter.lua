@@ -1,56 +1,32 @@
 ---@type LazySpec
 return {
 	"nvim-treesitter/nvim-treesitter",
-	dependencies = {
-		"nvim-treesitter/nvim-treesitter-textobjects",
-	},
+	lazy = false,
+	build = ":TSUpdate",
+	branch = "main",
 	init = function()
 		vim.opt.foldmethod = "expr"
-		vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 		vim.opt.foldlevel = 99
+		vim.g.loaded_nvim_treesitter = 1
+		vim.api.nvim_create_autocmd('FileType', {
+			callback = function(event)
+				local filetype = event.match
+				local bufnr = event.buf
+				if filetype == "" then
+					return
+				end
+				local parser_name = vim.treesitter.language.get_lang(filetype)
+				if not parser_name then
+					return
+				end
+				local ts_config = require('nvim-treesitter.config')
+				if not vim.tbl_contains(ts_config.get_available(), parser_name) then
+					return
+				end
+				vim.wo.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+				vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+				vim.treesitter.start(bufnr, parser_name)
+			end,
+		})
 	end,
-	---@type TSConfig
-	opts = {
-		ensure_installed = {
-			"c",
-			"javascript",
-			"typescript",
-			"lua",
-			"vim",
-			"markdown",
-			"markdown_inline"
-		},
-		sync_install = false,
-		auto_install = true,
-		highlight = {
-			enable = true,
-			additional_vim_regex_highlighting = false,
-		},
-		indent = {
-			enabled = true,
-		},
-		incremental_selection = {
-			enable = true,
-			keymaps = {
-				init_selection = "<c-space>",
-				node_incremental = "<c-space>",
-				scope_incremental = "<c-s>",
-				node_decremental = "<M-space>",
-			},
-		},
-		textobjects = {
-			select = {
-				enable = true,
-				lookahead = true,
-				keymaps = {
-					["aa"] = "@parameter.outer",
-					["ia"] = "@parameter.inner",
-					["af"] = "@function.outer",
-					["if"] = "@function.inner",
-					["ac"] = "@class.outer",
-					["ic"] = "@class.inner",
-				},
-			},
-		},
-	}
 }
