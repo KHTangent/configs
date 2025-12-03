@@ -5,47 +5,56 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
+	commit = "e7762c68daf24c3e356401f5223eeb5217047754",
 	init = function()
 		vim.loader.enable(false)
 	end,
 	opts = {
-		{
-			adapters = {
-				http = {
-					localgood = function()
-						return require("codecompanion.adapters.http").extend("openai_compatible", {
-							name = "localgood",
-							schema = {
-								model = {
-									default = "gpt-oss:20b",
-								},
-								env = {
-									url = "http://localhost:11434",
-								},
+		adapters = {
+			http = {
+				localgood = function()
+					return require("codecompanion.adapters.http").extend("openai_compatible", {
+						name = "localgood",
+						env = {
+							api_key = "OWU_API_KEY",
+							url = "OWU_HOST",
+							chat_url = "/chat/completions",
+							models_endpoint = "/models",
+						},
+						headers = {
+							["Content-Type"] = "application/json",
+							Authorization = "Bearer ${api_key}",
+						},
+						schema = {
+							model = {
+								default = "gpt-oss:120b",
 							},
-						})
-					end
+						},
+						parameters = {
+							sync = true,
+						},
+					})
+				end
+			},
+		},
+		strategies = {
+			chat = {
+				adapter = "localgood",
+			},
+			inline = {
+				adapter = "localgood",
+			},
+			cmd = {
+				adapter = "localgood",
+			},
+		},
+		display = {
+			chat = {
+				window = {
+					pos = "right",
 				},
 			},
-			strategies = {
-				chat = {
-					adapter = "localgood",
-				},
-				inline = {
-					adapter = "localgood",
-				},
-				cmd = {
-					adapter = "localgood",
-				},
-			},
-			display = {
-				chat = {
-					window = {
-						pos = "right",
-					},
-				},
-			},
-		}
+		},
 	},
 	keys = {
 		{
