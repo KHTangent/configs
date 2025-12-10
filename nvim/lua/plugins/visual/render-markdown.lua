@@ -5,5 +5,13 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-tree/nvim-web-devicons"
 	},
-	opts = {},
+	---@type render.md.UserConfig
+	opts = {
+		file_types = { "markdown", "codecompanion" },
+		completions = {
+			lsp = {
+				enabled = true,
+			},
+		},
+	},
 }
