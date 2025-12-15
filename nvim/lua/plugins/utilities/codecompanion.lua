@@ -5,7 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-treesitter/nvim-treesitter",
 	},
-	commit = "e7762c68daf24c3e356401f5223eeb5217047754",
+	version = "^18.0.0",
 	init = function()
 		vim.loader.enable(false)
 	end,
@@ -37,7 +37,7 @@ return {
 				end
 			},
 		},
-		strategies = {
+		interactions = {
 			chat = {
 				adapter = "localgood",
 			},
