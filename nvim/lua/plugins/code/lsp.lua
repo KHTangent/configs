@@ -157,6 +157,7 @@ return {
 	dependencies = {
 		"mason-org/mason.nvim",
 		"mason-org/mason-lspconfig.nvim",
+		"jedrzejboczar/devcontainers.nvim",
 	},
 	init = function()
 		vim.diagnostic.config({
