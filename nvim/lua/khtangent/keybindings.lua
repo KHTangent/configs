@@ -42,3 +42,7 @@ vim.keymap.set("n", "<leader>gc", function ()
 	local to_copy = "'" .. filename .. "':" .. line_number
 	vim.fn.setreg("+", to_copy)
 end, {desc = "Copy line with line number"})
+
+vim.keymap.set("n", "<leader>tw", function ()
+	vim.o.wrap = not vim.o.wrap
+end, {desc = "Toggle line wrap"})
