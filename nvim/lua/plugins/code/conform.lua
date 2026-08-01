@@ -1,14 +1,14 @@
-local prettier_list = { "prettierd", "prettier", stop_after_first = true }
+local js_formatters = { "eslint_d", "prettierd", "prettier", stop_after_first = true }
 
 ---@type LazySpec
 return {
 	"stevearc/conform.nvim",
 	opts = {
 		formatters_by_ft = {
-			javascript = prettier_list,
-			typescript = prettier_list,
-			html = prettier_list,
-			vue = prettier_list,
+			javascript = js_formatters,
+			typescript = js_formatters,
+			html = js_formatters,
+			vue = js_formatters,
 		},
 	},
 	keys = {
