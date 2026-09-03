@@ -10,7 +10,6 @@ return {
 			"lua_ls",
 			"pylsp",
 			"vtsls",
-			"yamlls",
 		},
 	},
 	dependencies = {
