@@ -10,6 +10,19 @@
 			},
 			{
 				"language": [
+					"c",
+					"cpp"
+				],
+				"path": "./c.json"
+			},
+			{
+				"language": [
+					"cpp"
+				],
+				"path": "./cpp.json"
+			},
+			{
+				"language": [
 					"go"
 				],
 				"path": "./go.json"
@@ -25,7 +38,8 @@
 			{
 				"language": [
 					"javascript",
-					"typescript"
+					"typescript",
+					"vue"
 				],
 				"path": "./javascript.json"
 			},

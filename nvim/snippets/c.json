@@ -1,0 +1,8 @@
+{
+	"IWYU pragma": {
+		"prefix": "iwyu",
+		"body": [
+			"// IWYU pragma: keep"
+		]
+	}
+}

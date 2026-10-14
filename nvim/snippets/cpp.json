@@ -1,0 +1,8 @@
+{
+	"make-unique": {
+		"prefix": "mku",
+		"body": [
+			"std::make_unique<$1>($0)"
+		]
+	}
+}
