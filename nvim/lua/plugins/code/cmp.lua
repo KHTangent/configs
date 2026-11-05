@@ -22,14 +22,14 @@ return {
 				else
 					fallback()
 				end
-			end),
+			end, {"i", "s"}),
 			['<C-b>'] = cmp.mapping(function(fallback)
 				if luasnip.jumpable(-1) then
 					luasnip.jump(-1)
 				else
 					fallback()
 				end
-			end),
+			end, {"i", "s"}),
 			["<CR>"] = cmp.mapping.confirm({ select = true }),
 			["<C-y>"] = cmp.mapping.confirm({ select = true }),
 			["<C-e>"] = cmp.mapping.abort(),
