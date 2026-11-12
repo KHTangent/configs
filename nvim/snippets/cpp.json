@@ -4,5 +4,13 @@
 		"body": [
 			"std::make_unique<$1>($0)"
 		]
+	},
+	"if-let": {
+		"prefix": "iflet",
+		"body": [
+			"if (auto ${1:result} = $2) {",
+			"\t$0",
+			"}"
+		]
 	}
 }
