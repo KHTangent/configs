@@ -8,7 +8,8 @@ local function lsp_setup()
 		end
 	end
 	enable_ls_if_executable("clangd")
-	enable_ls_if_executable("nil")
+	enable_ls_if_executable("nil", "nil_ls")
+	enable_ls_if_executable("beancount-language-server", "beancount")
 	enable_ls_if_executable("rust-analyzer", "rust_analyzer")
 	enable_ls_if_executable("markdown-oxide", "markdown_oxide")
 	enable_ls_if_executable("openscad-lsp", "openscad_lsp")
