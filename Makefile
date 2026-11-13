@@ -34,7 +34,7 @@ tmux-compiled:
 
 font:
 	sudo mkdir -p /usr/local/share/fonts
-	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf" -O "FiraCodeMonoRegular.ttf"
+	wget "https://github.com/ryanoasis/nerd-fonts/raw/refs/tags/v3.5.1/patched-fonts/FiraCode/FiraCodeNerdFontMono-Regular.ttf" -O "FiraCodeMonoRegular.ttf"
 	sudo mv "FiraCodeMonoRegular.ttf" /usr/local/share/fonts/
 
 cargo-packages:
