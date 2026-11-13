@@ -1,61 +1,61 @@
-packages-ubuntu:
+updated-ubuntu-packages:
 	sudo apt update
-	sudo apt install build-essential ffmpeg wget curl fzf
+	sudo apt install -y software-properties-common build-essential \
+		ffmpeg wget curl fzf bison libevent-dev autoconf automake \
+		pkg-config libncurses-dev
 	# Use a more recent Git version
-	sudo apt-add-repository ppa:git-core/ppa
+	sudo apt-add-repository -y ppa:git-core/ppa
 	sudo apt update
-	sudo apt install git
-	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
-	source ~/.bashrc
-	# Install Node.js
-	nvm install --lts
+	sudo apt install -y git
 
-tmux:
+neovim-ubuntu:
+	sudo add-apt-repository -y ppa:neovim-ppa/unstable
+	sudo apt update
+	sudo apt install -y neovim python3-pip python3-pynvim
+	. "$$HOME/.nvm/nvm.sh" && npm install -g neovim
+	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 150
+	sudo update-alternatives --set vim /usr/bin/nvim
+	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 150
+	sudo update-alternatives --set editor /usr/bin/nvim
+
+nodejs:
+	wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.41.0/install.sh | bash
+	# Install Node.js
+	. "$$HOME/.nvm/nvm.sh" && nvm install --lts
+
+rust:
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+
+tmux-compiled:
 	git clone https://github.com/tmux/tmux
 	cd tmux && ./autogen.sh && ./configure && make && sudo make install
 	git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 	ln -s -f ${PWD}/.tmux.conf /home/${USER}/.tmux.conf
 
-terminal:
+font:
+	sudo mkdir -p /usr/local/share/fonts
 	wget "https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/FiraCodeNerdFontMono-Regular.ttf" -O "FiraCodeMonoRegular.ttf"
 	sudo mv "FiraCodeMonoRegular.ttf" /usr/local/share/fonts/
+
+cargo-packages:
+	. "$$HOME/.cargo/env" && cargo install eza git-delta bat fd-find ripgrep
+
+starship:
 	curl -sS https://starship.rs/install.sh | sh
-	ln -s -f ${PWD}/starship.toml /home/${USER}/.config/starship.toml
+
+packages-ubuntu: updated-ubuntu-packages nodejs neovim-ubuntu starship tmux-compiled font rust cargo-packages
+
+dotfiles:
+	mkdir -p /home/${USER}/.config
+	ln -sf ${PWD}/.tmux.conf /home/${USER}/.tmux.conf
+	ln -sf ${PWD}/starship.toml /home/${USER}/.config/starship.toml
 	echo "if [ -f ~/.bashrc2 ]; then" >> /home/${USER}/.bashrc
 	echo "	. ~/.bashrc2" >> /home/${USER}/.bashrc
 	echo "fi" >> /home/${USER}/.bashrc
-	ln -s -f ${PWD}/.bashrc2 /home/${USER}/.bashrc2
+	ln -sf ${PWD}/.bashrc2 /home/${USER}/.bashrc2
+	ln -sf ${PWD}/.gitconfig /home/${USER}/.gitconfig
+	ln -sfn ${PWD}/nvim/ /home/${USER}/.config/nvim
 
-alacritty-ubuntu:
-	mkdir -p ${HOME}/Programs
-	sudo apt install cmake pkg-config libfreetype6-dev libfontconfig1-dev libxcb-xfixes0-dev libxkbcommon-dev python3
-	git clone https://github.com/alacritty/alacritty
-	cd alacritty && cargo build --release --no-default-features --features=x11
-	sudo cp ./alacritty/target/release/alacritty /usr/local/bin/alacritty
-	sudo cp ./alacritty/extra/logo/alacritty-term.svg /usr/share/pixmaps/Alacritty.svg
-	sudo tic -xe alacritty,alacritty-direct ./alacritty/extra/alacritty.info
-	sudo desktop-file-install alacritty/extra/linux/Alacritty.desktop
-	sudo update-desktop-database
-	ln -s -f ${PWD}/.alacritty.yml /home/${USER}/.alacritty.yml
-	ln -s -f ${PWD}/.alacritty.toml /home/${USER}/.alacritty.toml
+.PHONY: all-ubuntu packages-ubuntu dotfiles rust nodejs starship
 
-git:
-	ln -s -f ${PWD}/.gitconfig /home/${USER}/.gitconfig
-
-cargo-packages:
-	cargo install eza git-delta bat fd-find ripgrep
-
-neovim:
-	sudo add-apt-repository ppa:neovim-ppa/unstable
-	sudo apt update
-	sudo apt install neovim python3-pip
-	pip3 install pynvim
-	npm install -g neovim
-	mkdir -p /home/${USER}/.config
-	ln -s -f ${PWD}/nvim/ /home/${USER}/.config/nvim
-	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 150
-	sudo update-alternatives --config vim
-	sudo update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 150
-	sudo update-alternatives --config editor
-
+all-ubuntu: packages-ubuntu dotfiles
