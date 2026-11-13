@@ -11,7 +11,7 @@ updated-ubuntu-packages:
 neovim-ubuntu:
 	sudo add-apt-repository -y ppa:neovim-ppa/unstable
 	sudo apt update
-	sudo apt install -y neovim python3-pip python3-pynvim
+	sudo apt install -y neovim python3-pip python3-pynvim tree-sitter-cli
 	. "$$HOME/.nvm/nvm.sh" && npm install -g neovim
 	sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 150
 	sudo update-alternatives --set vim /usr/bin/nvim
