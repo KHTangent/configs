@@ -18,6 +18,7 @@ background-opacity = 0.9
 cursor-style = block
 cursor-style-blink = false
 shell-integration-features = no-cursor
+term = xterm-256color
 
 # Only keep keybinds I use
 keybind = clear
