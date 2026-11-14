@@ -3,5 +3,7 @@ alacritty/
 tmux/
 
 opencode/node_modules/
-opencode/*.json
+opencode/package.json
+opencode/package-lock.json
+opencode/service.json
 
