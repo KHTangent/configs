@@ -1,4 +1,7 @@
 vim/
 alacritty/
-nvim/plugin/packer_compiled.lua
+tmux/
+
+opencode/node_modules/
+opencode/*.json
 

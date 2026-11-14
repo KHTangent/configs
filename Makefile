@@ -55,6 +55,7 @@ dotfiles:
 	ln -sf ${PWD}/.bashrc2 /home/${USER}/.bashrc2
 	ln -sf ${PWD}/.gitconfig /home/${USER}/.gitconfig
 	ln -sfn ${PWD}/nvim/ /home/${USER}/.config/nvim
+	ln -sfn ${PWD}/opencode/ /home/${USER}/.config/opencode
 
 .PHONY: all-ubuntu packages-ubuntu dotfiles rust nodejs starship
 
