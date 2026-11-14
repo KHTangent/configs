@@ -7,5 +7,87 @@
 			"effect": "ask"
 		},
 	],
+	"agents": {
+		"one-shot": {
+			"description": "Builds a complete project autonomously: edits files, runs commands, and launches subagents",
+			"mode": "primary",
+			"permissions": [
+				// Autonomy: never block an unattended run on a prompt.                                                                  5% used
+				{
+					"action": "read",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "edit",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "shell",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "subagent",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "skill",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "question",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "webfetch",
+					"resource": "*",
+					"effect": "allow"
+				},
+				{
+					"action": "websearch",
+					"resource": "*",
+					"effect": "allow"
+				},
+				// Fail fast on secrets rather than stalling; examples stay readable.
+				{
+					"action": "read",
+					"resource": "*.env",
+					"effect": "deny"
+				},
+				{
+					"action": "read",
+					"resource": "*.env.*",
+					"effect": "deny"
+				},
+				{
+					"action": "read",
+					"resource": "*.env.example",
+					"effect": "allow"
+				},
+				// Guardrails. Denies cannot be approved away later.
+				{
+					"action": "shell",
+					"resource": "git push *",
+					"effect": "deny"
+				},
+				{
+					"action": "shell",
+					"resource": "sudo *",
+					"effect": "deny"
+				},
+				// Only if the agent must reach outside the session directory.
+				{
+					"action": "external_directory",
+					"resource": "~/Development/*",
+					"effect": "allow"
+				}
+			]
+		}
+	},
 	"lsp": true
 }
