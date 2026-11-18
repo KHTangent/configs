@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 	},
+	version = "^20.0.0",
 	init = function()
 		vim.loader.enable(false)
 	end,
